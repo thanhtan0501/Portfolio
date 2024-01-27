@@ -10,8 +10,6 @@ import ImageSlider from '../ImageSlider'
 const FeedCard = ({ data }: { data: Feed }) => {
   const { user } = useAppSelector(state => state.user)
 
-  console.log(data)
-
   return (
     <article
       data-project-id={data.id}

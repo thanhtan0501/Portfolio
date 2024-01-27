@@ -2,7 +2,7 @@ import React from 'react'
 import { LinkIcon } from '../../../assets/icon'
 import { Technologies as Tech } from '../../../config'
 
-const Technologies = ({ data }: { data: string[] }) => {
+const Technologies = ({ data }: { data: String[] }) => {
   const techArr = Tech.filter(({ value }) => data.includes(value))
 
   return (

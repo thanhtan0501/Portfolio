@@ -1,3 +1,5 @@
+import React from 'react'
+
 export const LogoIcon = ({ w, h, className }: { w: string; h: string; className: string }) => (
   <svg
     width={w}

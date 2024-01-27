@@ -11,23 +11,12 @@ import {
 } from '../../../assets/icon'
 import DateFormatter from '../FormatDate'
 import ContentBlock from '../ContentBlock'
-import { Media, Project } from '../../../payload-types'
+import { User } from '../../../payload-types'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { getUserSuccess } from '../../redux/slices/userSlice'
 
 interface UserProps {
-  user: {
-    id: string
-    name?: string | null
-    description?: string | null
-    birthday?: string | null
-    location?: string | null
-    avatar?: string | { url?: string } | Media
-    project?: (string | null) | Project
-    updatedAt: string
-    createdAt: string
-    email: string
-  }
+  user: User
 }
 
 const Description = ({ user }: UserProps) => {
@@ -44,7 +33,7 @@ const Description = ({ user }: UserProps) => {
       <div className="relative flex justify-end items-center min-h-half-avatar py-2 pt-6">
         <Image
           className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-2 object-cover object-center shadow"
-          src={user.avatar?.url}
+          src={user.avatar.url}
           alt="Thanh Tan"
           width="200"
           height="200"

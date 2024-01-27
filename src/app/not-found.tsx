@@ -9,8 +9,8 @@ const NotFound = () => {
 
   useEffect(() => {
     const load = () => {
-      const LABEL = document.querySelector('[data-jiggle-label]')
-      const JIGGLERS = document.querySelector('[data-jigglers]')
+      const LABEL = document.querySelector('[data-jiggle-label]') as HTMLElement
+      const JIGGLERS = document.querySelector('[data-jigglers]') as HTMLElement
       const JIGGLE = document.querySelectorAll('[data-jiggle-404]')
       LABEL.innerHTML = `"${window.location.pathname}" not found`
 
@@ -23,7 +23,8 @@ const NotFound = () => {
       for (const letter of window.location.pathname.split('')) {
         jiggles += `<span aria-hidden="true" class=" text-surface-3 font-outline-2 font-bold" data-jiggle="true">${letter}</span>`
       }
-      JIGGLERS.innerHTML = `${jiggles}<br>${LABEL.parentNode.innerHTML}`
+      const temp = LABEL.parentNode as HTMLElement
+      JIGGLERS.innerHTML = `${jiggles}<br>${temp.innerHTML}`
     }
 
     const update = ({ x, y }) => {

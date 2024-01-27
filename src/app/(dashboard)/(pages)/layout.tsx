@@ -1,3 +1,4 @@
+import React from 'react'
 import { Suspense } from 'react'
 import { ROUTES } from '../../../utils/routes'
 import Header from '../../_components/Header'

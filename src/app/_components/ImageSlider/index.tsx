@@ -8,7 +8,7 @@ import Gallery from './Gallery'
 import Slider from './Slider'
 
 interface ImageSliderProps {
-  dataImage: { image: string | Media; id?: string }[]
+  dataImage: { image: Media; id?: string }[]
   isCustom?: string
 }
 

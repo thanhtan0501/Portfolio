@@ -4,7 +4,7 @@ import { Code } from '../../../payload-types'
 import Spinner from '../Spinner/Spinner'
 
 interface CodeProps {
-  code: { title?: string; code: string; url?: string } | string | Code
+  code: { title: string; code: string; url: string } | Code
 }
 
 const Banner = ({ code }: CodeProps) => {
@@ -12,7 +12,7 @@ const Banner = ({ code }: CodeProps) => {
 
   return (
     <div className="w-full aspect-[5/2] bg-surface-3 rounded-lg shadow-md">
-      {code?.url && code?.title && (
+      {code.url && code?.title && (
         <iframe
           title={code.title}
           className="w-full h-full rounded-lg"
