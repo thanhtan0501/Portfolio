@@ -1,0 +1,195 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+@layer base {
+  :root {
+    --background: 214.29 13.73% 10%;
+    --brand-stroke: 217.17 100% 51.57%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.5rem;
+
+    --gray-0: #f8f9fa;
+    --gray-1: #f1f3f5;
+    --gray-2: #e9ecef;
+    --gray-3: #dee2e6;
+    --gray-4: #ced4da;
+    --gray-5: #adb5bd;
+    --gray-6: #868e96;
+    --gray-7: #495057;
+    --gray-8: #343a40;
+    --gray-9: #212529;
+    --gray-10: #16191d;
+    --gray-11: #0d0f12;
+    --gray-12: #030507;
+
+    --gray-0-hsl: 210 17% 98%;
+    --gray-1-hsl: 210 17% 95%;
+    --gray-2-hsl: 210 16% 93%;
+    --gray-3-hsl: 210 14% 89%;
+    --gray-4-hsl: 210 14% 83%;
+    --gray-5-hsl: 210 11% 71%;
+    --gray-6-hsl: 210 7% 56%;
+    --gray-7-hsl: 210 9% 31%;
+    --gray-8-hsl: 210 10% 23%;
+    --gray-9-hsl: 210 11% 15%;
+    --gray-10-hsl: 214 14% 10%;
+    --gray-11-hsl: 216 16% 6%;
+    --gray-12-hsl: 210 40% 2%;
+    --gray-13-hsl: 25.71 3.78% 63.73%;
+
+
+    --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.80rem);
+    --step--1: clamp(0.83rem, calc(0.78rem + 0.29vw), 1.00rem);
+    --step-0: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
+    --step-1: clamp(1.20rem, calc(1.07rem + 0.63vw), 1.56rem);
+    --step-2: clamp(1.44rem, calc(1.26rem + 0.89vw), 1.95rem);
+    --step-3: clamp(1.73rem, calc(1.48rem + 1.24vw), 2.44rem);
+    --step-4: clamp(2.07rem, calc(1.73rem + 1.70vw), 3.05rem);
+    --step-5: clamp(2.49rem, calc(2.03rem + 2.31vw), 3.82rem);
+    --step-6: clamp(2.99rem, calc(2.37rem + 3.10vw), 4.77rem);
+    --step-7: clamp(3.58rem, calc(2.76rem + 4.13vw), 5.96rem);
+    --step-8: clamp(4.30rem, calc(3.20rem + 5.48vw), 7.45rem);
+    --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
+
+    --width: 724px;
+  }
+
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--gray-5);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray-7);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--gray-5);
+}
+
+
+body {
+  min-height: 100vh;
+  color: var(--gray-1);
+  -moz-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -khtml-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.navbar-blur {
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  font-size: var(--step-5);
+  line-height: 1;
+}
+
+h2 {
+  font-size: var(--step-3);
+  line-height: 1;
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  .font-outline-2 {
+    -webkit-text-stroke: 0.5px white;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+
+/* Component */
+.w-feature {
+  width: var(--width);
+}
+
+.w-content {
+  width: calc(var(--width) * 0.86);
+}
+
+/* Loader */
+#loader {
+  width: 40px;
+  height: 40px;
+  background: var(--gray-5);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+}
+
+#loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  color: white;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 11px 0px, 11px 11px, 0px 11px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

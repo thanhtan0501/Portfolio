@@ -1,0 +1,10 @@
+.gallery-transition {
+    flex: 1;
+    cursor: pointer;
+    transition: flex 0.5s;
+}
+
+.gallery-transition:hover {
+    flex: 6;
+    /* padding: 0; */
+}
