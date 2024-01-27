@@ -52,7 +52,7 @@ const FeedReel = () => {
     )
     const fetchData = async () => {
       try {
-        const req = await fetch(`/api/feeds?${projectQuery}`)
+        const req = await fetch(`${process.env.PAYLOAD_SECRET}/api/feeds?${projectQuery}`)
         const json = await req.json()
         clearTimeout(timer)
         const { docs } = json as { docs: Feed[] }
