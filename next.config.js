@@ -12,14 +12,12 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'assets.example.com',
-        port: '',
-        pathname: '/account123/**',
+        hostname: 'thanhtan0501.vercel.app',
       },
     ],
   },
 
-  productionBrowserSourceMaps: false, // Disable source maps in development
-  optimizeFonts: false, // Disable font optimization
-  minify: false, // Disable minification
+  // productionBrowserSourceMaps: false, // Disable source maps in development
+  // optimizeFonts: false, // Disable font optimization
+  // minify: false, // Disable minification
 }
