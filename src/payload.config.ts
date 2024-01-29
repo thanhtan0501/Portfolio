@@ -3,11 +3,6 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import dotenv from 'dotenv'
 import path from 'path'
-
-dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
-})
-
 import { buildConfig } from 'payload/config'
 
 import Users from './collections/Users'
@@ -18,6 +13,10 @@ import { Footer } from './globals/Footer'
 import Codes from './collections/Codes'
 import { Feeds } from './collections/Feeds'
 // import { LogoIcon1 } from './assets/icon'
+
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+})
 
 export default buildConfig({
   admin: {

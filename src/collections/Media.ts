@@ -12,6 +12,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     adminThumbnail: 'thumbnail',
+    staticURL: '/media',
     staticDir: path.resolve(__dirname, '/media'),
     mimeTypes: ['image/*', 'audio/*', 'video/*', 'application/pdf'],
     imageSizes: [
