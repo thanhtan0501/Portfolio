@@ -9,7 +9,6 @@ import Spinner from '../../_components/Spinner/Spinner'
 const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      {/* @ts-expect-error Async Server Component */}
       <Header />
       <div className="w-feature max-w-full mx-auto pb-2">
         <TabNav item={ROUTES} />
