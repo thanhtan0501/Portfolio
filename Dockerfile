@@ -2,7 +2,7 @@ FROM node:18.8-alpine as base
 
 FROM base as builder
 
-WORKDIR /home/node/app
+WORKDIR /app
 COPY package*.json ./
 
 COPY . .
