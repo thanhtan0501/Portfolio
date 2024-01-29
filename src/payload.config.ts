@@ -17,7 +17,7 @@ import { Projects } from './collections/Projects/Projects'
 import { Footer } from './globals/Footer'
 import Codes from './collections/Codes'
 import { Feeds } from './collections/Feeds'
-import { LogoIcon1 } from './assets/icon'
+// import { LogoIcon1 } from './assets/icon'
 
 export default buildConfig({
   admin: {
