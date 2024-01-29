@@ -45,6 +45,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
+  routes: {
+    admin: '/admin',
+  },
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
