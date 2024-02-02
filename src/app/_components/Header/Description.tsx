@@ -28,6 +28,8 @@ const Description = ({ user }: UserProps) => {
     }
   }, [])
 
+  console.log('user:', user)
+
   return (
     <>
       <div className="relative flex justify-end items-center min-h-half-avatar py-2 pt-6">
