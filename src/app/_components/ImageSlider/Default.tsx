@@ -16,6 +16,7 @@ const Default = ({ data }: DefaultProps) => {
               if (index % 2 === 0) {
                 return (
                   <Image
+                    key={index}
                     alt="Image feed"
                     className={`rounded-lg object-cover flex-1 overflow-hidden w-full max-h-full h-full object-center`}
                     src={item.link}
@@ -32,6 +33,7 @@ const Default = ({ data }: DefaultProps) => {
               if (index % 2 !== 0) {
                 return (
                   <Image
+                    key={index}
                     alt="Image feed"
                     className={`rounded-lg object-cover flex-1 overflow-hidden w-full h-full  object-center`}
                     src={item.link}
