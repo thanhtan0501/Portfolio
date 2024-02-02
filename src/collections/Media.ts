@@ -10,9 +10,12 @@ export const Media: CollectionConfig = {
       },
     ],
   },
+  admin: {
+    useAsTitle: 'alt',
+  },
   upload: {
     adminThumbnail: 'thumbnail',
-    staticURL: '/media',
+    // staticURL: '/media',
     staticDir: path.resolve(__dirname, '/media'),
     mimeTypes: ['image/*', 'audio/*', 'video/*', 'application/pdf'],
     imageSizes: [

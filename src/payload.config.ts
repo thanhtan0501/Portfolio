@@ -5,6 +5,9 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
+
 import Users from './collections/Users'
 import { Pages } from './collections/Pages'
 import { Media } from './collections/Media'
@@ -12,10 +15,18 @@ import { Projects } from './collections/Projects/Projects'
 import { Footer } from './globals/Footer'
 import Codes from './collections/Codes'
 import { Feeds } from './collections/Feeds'
-// import { LogoIcon1 } from './assets/icon'
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
+})
+
+const adapter = gcsAdapter({
+  options: {
+    keyFilename: process.env.GCS_KEYFILENAME,
+    apiEndpoint: process.env.GCS_ENDPOINT,
+    projectId: process.env.GCS_PROJECT_ID,
+  },
+  bucket: process.env.GCS_BUCKET,
 })
 
 export default buildConfig({
@@ -32,6 +43,16 @@ export default buildConfig({
         // Icon: LogoIcon1,
       },
     },
+    webpack: config => ({
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@payloadcms/plugin-cloud-storage': './mocks/plugin-cloud-storage', // mocks out the entire cloud storage plugin. there's an issue where it causes the Payload frontend to not build
+        },
+      },
+    }),
   },
   editor: slateEditor({}),
   collections: [Users, Media, Projects, Pages, Codes, Feeds],
@@ -40,10 +61,20 @@ export default buildConfig({
   csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL, process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(
     Boolean,
   ),
-  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || '',
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
+  plugins: [
+    cloudStorage({
+      collections: {
+        media: {
+          adapter,
+          disableLocalStorage: false,
+        },
+      },
+    }),
+  ],
   routes: {
     admin: '/admin',
   },
