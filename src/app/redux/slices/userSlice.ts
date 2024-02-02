@@ -9,7 +9,7 @@ const initialState: UserState = {
   user: {
     name: 'Thanh Tan',
     avatar: {
-      url: '/assets/image/avatar.jpg',
+      url: '',
     },
     description: "'Where in the world is Thanh Tan?'",
     birthday: '1999-03-20T12:00:00.000Z',
