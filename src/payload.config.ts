@@ -43,16 +43,27 @@ export default buildConfig({
         // Icon: LogoIcon1,
       },
     },
-    webpack: config => ({
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve.alias,
-          '@payloadcms/plugin-cloud-storage': './mocks/plugin-cloud-storage', // mocks out the entire cloud storage plugin. there's an issue where it causes the Payload frontend to not build
+    webpack: config => {
+      const newConfig = {
+        ...config,
+        resolve: {
+          ...(config.resolve || {}),
+          alias: {
+            ...(config.resolve.alias || {}),
+            react: path.resolve(__dirname, '../node_modules/react'),
+            '@payloadcms/plugin-cloud-storage': path.resolve(
+              __dirname,
+              './mocks/plugin-cloud-storage',
+            ),
+            '@payloadcms/plugin-cloud-storage/gcs': path.resolve(
+              __dirname,
+              './mocks/plugin-cloud-storage/gcs.ts',
+            ),
+          },
         },
-      },
-    }),
+      }
+      return newConfig
+    },
   },
   editor: slateEditor({}),
   collections: [Users, Media, Projects, Pages, Codes, Feeds],
@@ -71,16 +82,16 @@ export default buildConfig({
       },
     }),
   ],
-  routes: {
-    admin: '/admin',
-  },
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URI,
-  }),
   cors: ['https://tanthanh.up.railway.app', process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
   csrf: [
     'https://tanthanh.up.railway.app',
     process.env.PAYLOAD_PUBLIC_SERVER_URL,
     process.env.NEXT_PUBLIC_PAYLOAD_URL,
   ].filter(Boolean),
+  routes: {
+    admin: '/admin',
+  },
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URI,
+  }),
 })

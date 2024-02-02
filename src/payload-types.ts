@@ -28,7 +28,7 @@ export interface User {
   birthday?: string | null
   location?: string | null
   avatar?: Media | null
-  code?: null | Code
+  code?: Code | null
   updatedAt: string
   createdAt: string
   email: string
