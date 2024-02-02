@@ -57,10 +57,6 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [Users, Media, Projects, Pages, Codes, Feeds],
   globals: [Footer],
-  cors: [process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
-  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL, process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(
-    Boolean,
-  ),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -81,4 +77,10 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
+  cors: ['https://tanthanh.up.railway.app', process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
+  csrf: [
+    'https://tanthanh.up.railway.app',
+    process.env.PAYLOAD_PUBLIC_SERVER_URL,
+    process.env.NEXT_PUBLIC_PAYLOAD_URL,
+  ].filter(Boolean),
 })

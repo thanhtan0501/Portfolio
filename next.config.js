@@ -12,7 +12,7 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'thanhtan0501.vercel.app',
+        hostname: 'tanthanh.up.railway.app',
       },
     ],
   },
