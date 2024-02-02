@@ -26,7 +26,7 @@ const Description = ({ user }: UserProps) => {
     if (user) {
       dispatch(getUserSuccess({ user }))
     }
-  }, [])
+  }, [user])
 
   console.log('user:', user)
 
