@@ -71,6 +71,8 @@ const FeedReel = () => {
     }
   }, [page])
 
+  console.log(results)
+
   return (
     <div>
       {isLoading && <Spinner />}

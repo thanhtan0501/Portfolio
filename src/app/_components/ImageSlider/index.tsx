@@ -13,9 +13,21 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ dataImage, isCustom = '1' }: ImageSliderProps) => {
-  const urls = dataImage.map(({ image }) => {
-    return { type: image.mimeType, link: typeof image === 'string' ? image : image.url }
-  })
+  // const urls = dataImage.map(({ image }) => {
+  //   if (image.url && image.mimeType) {
+  //     return { type: image.mimeType, link: image.url }
+  //   } else {
+  //     return
+  //   }
+  // })
+
+  const urls = dataImage.reduce((accumulator, { image }) => {
+    if (image.mimeType && image.url) {
+      return [...accumulator, { type: image.mimeType, link: image.url }]
+    } else {
+      return [...accumulator]
+    }
+  }, [])
 
   return (
     <div className="group relative aspect-auto h-full overflow-hidden rounded-lg w-full">
