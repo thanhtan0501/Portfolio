@@ -12,6 +12,11 @@ module.exports = {
       },
       {
         protocol: 'https',
+        hostname: 'storage.cloud.google.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'tanthanh.up.railway.app',
       },
       {

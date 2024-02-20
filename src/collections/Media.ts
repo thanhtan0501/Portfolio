@@ -15,9 +15,8 @@ export const Media: CollectionConfig = {
   },
   upload: {
     adminThumbnail: 'thumbnail',
-    staticURL: './media',
-    // staticDir: path.resolve(__dirname, '/media'),
-    staticDir: path.resolve(__dirname, '../../../media'),
+    staticURL: '/media',
+    staticDir: path.resolve(__dirname, '/media'),
     mimeTypes: ['image/*', 'audio/*', 'video/*', 'application/pdf'],
     imageSizes: [
       { name: 'thumbnail', width: 320, height: 320, position: 'centre' },
@@ -28,6 +27,9 @@ export const Media: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true,
+    update: () => true,
+    delete: () => true,
   },
   fields: [
     {
