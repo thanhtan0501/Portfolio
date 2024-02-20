@@ -13,7 +13,8 @@
 .stars {
     position: absolute;
     inset: 0;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
     width: 100vw;
     z-index: -1;
     opacity: 1;
