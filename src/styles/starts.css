@@ -1,0 +1,61 @@
+@-webkit-keyframes float {
+    to {
+        translate: -50% calc(-100vh + -100%);
+    }
+}
+
+@keyframes float {
+    to {
+        translate: -50% calc(-100vh + -100%);
+    }
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    opacity: 1;
+}
+
+.star {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: hsl(45 100% 80%);
+    top: 100%;
+}
+
+.moon {
+    width: 50vmin;
+    height: 50vmin;
+}
+
+.astrobear {
+    width: 4vmin;
+    opacity: 1;
+    top: 10%;
+    right: 25%;
+    position: absolute;
+    overflow: visible !important;
+}
+
+.astrobear__body {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    -webkit-animation: spin 6s infinite linear;
+    animation: spin 6s infinite linear;
+}
+
+@-webkit-keyframes spin {
+    to {
+        rotate: -360deg;
+    }
+}
+
+@keyframes spin {
+    to {
+        rotate: -360deg;
+    }
+}

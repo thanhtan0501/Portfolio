@@ -3,16 +3,15 @@ import React from 'react'
 import { Project } from '../../../payload-types'
 import { useAppSelector } from '../../../hooks/hooks'
 import Image from 'next/image'
-import ContentBlock from '../ContentBlock'
 import { LinkIcon } from '../../../assets/icon'
 import ImageSlider from '../ImageSlider'
 import { Technologies } from '../../../config'
 import Link from 'next/link'
+import { RichText } from '../RichText'
 
 const Card = ({ data }: { data: Project }) => {
   const { user } = useAppSelector(state => state.user)
   const techArr = Technologies.filter(item => data?.technologies.includes(item.value))
-  console.log(data)
 
   return (
     <article
@@ -46,7 +45,7 @@ const Card = ({ data }: { data: Project }) => {
           )}
         </div>
         <h1 className="my-2 font-bold text-fluid-2">{data.title}</h1>
-        <ContentBlock type="description">{data.description}</ContentBlock>
+        <RichText content={data.description} />
         {data.technologies && techArr && techArr.length > 0 && (
           <div className="inline-flex items-center gap-1 mt-2">
             {techArr
@@ -64,7 +63,9 @@ const Card = ({ data }: { data: Project }) => {
               ))}
           </div>
         )}
-        <ImageSlider dataImage={data.images} />
+        <div className="bg-surface-3 rounded-lg w-full grid gap-y-2 leading-tight aspect-video">
+          <ImageSlider dataImage={data.images} />
+        </div>
 
         <div className="card__actions flex justify-end items-center">
           {true && (

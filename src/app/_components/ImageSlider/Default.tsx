@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import React from 'react'
+import ModalImage from './ModalImage'
 
 interface DefaultProps {
   data: { type: string; link: string }[]
@@ -11,36 +11,18 @@ const Default = ({ data }: DefaultProps) => {
     >
       {data && data.length > 0 && (
         <>
-          <div className="w-[50%] h-full pt-4 flex flex-col gap-[2vmin]">
+          <div className="w-[50%] h-full flex flex-col gap-[2vmin]">
             {data.map((item, index) => {
               if (index % 2 === 0) {
-                return (
-                  <Image
-                    key={index}
-                    alt="Image feed"
-                    className={`rounded-lg object-cover flex-1 overflow-hidden w-full max-h-full h-full object-center`}
-                    src={item.link}
-                    width={750}
-                    height={500}
-                  />
-                )
+                return <ModalImage key={index} src={item.link} alt="Image feed" />
               }
               return
             })}
           </div>
-          <div className="w-[50%] h-full pb-4 flex flex-col gap-[2vmin]">
+          <div className="w-[50%] h-full flex flex-col gap-[2vmin]">
             {data.map((item, index) => {
               if (index % 2 !== 0) {
-                return (
-                  <Image
-                    key={index}
-                    alt="Image feed"
-                    className={`rounded-lg object-cover flex-1 overflow-hidden w-full h-full  object-center`}
-                    src={item.link}
-                    width={750}
-                    height={500}
-                  />
-                )
+                return <ModalImage key={index} src={item.link} alt="Image feed" />
               }
               return
             })}

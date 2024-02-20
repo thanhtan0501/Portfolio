@@ -21,7 +21,7 @@ const Technologies = ({ data }: { data: String[] }) => {
           <LinkIcon className="w-5 h-5" />
         </a>
       </h2>
-      <ul className="list-disc pl-8 mb-6">
+      <ul className="list-disc pl-8 mb-2">
         {techArr &&
           techArr.length > 0 &&
           techArr.map(item => (

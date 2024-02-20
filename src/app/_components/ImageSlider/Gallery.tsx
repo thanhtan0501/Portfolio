@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import ModalImage from './ModalImage'
 interface GalleryProps {
   data: { type: string; link: string }[]
 }
@@ -13,13 +14,7 @@ const Gallery = ({ data }: GalleryProps) => {
             key={index}
             className={`w-full h-full ${index % 2 === 0 ? 'pt-4' : 'pb-4'} gallery-transition`}
           >
-            <Image
-              alt="Image feed"
-              className={`w-full h-full rounded-lg object-cover overflow-hidden `}
-              src={item.link}
-              width={750}
-              height={500}
-            />
+            <ModalImage key={index} src={item.link} alt="Image feed" />
           </div>
         ))}
     </div>

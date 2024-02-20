@@ -14,7 +14,7 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
         <TabNav item={ROUTES} />
       </div>
       <Suspense fallback={<Spinner />}>
-        <div className="flex-grow flex-1">
+        <div className="flex-grow flex-1 relative overflow-x-hidden">
           <Wrapper>{children}</Wrapper>
         </div>
       </Suspense>

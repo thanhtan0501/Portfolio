@@ -3,6 +3,7 @@ import React from 'react'
 import { getProjectById } from '../../../../api/projectApi'
 import ProjectDetail from '../../../../_components/ProjectDetail'
 import Technologies from '../../../../_components/ProjectDetail/Technologies'
+import RelatedProjects from '../../../../_components/ProjectDetail/RelatedProjects'
 
 interface PageProps {
   params: {
@@ -23,6 +24,7 @@ export default async function page({ params }: PageProps) {
         <>
           <ProjectDetail data={project} />
           <Technologies data={project.technologies} />
+          <RelatedProjects data={project.relatedProjects} />
         </>
       )}
     </>

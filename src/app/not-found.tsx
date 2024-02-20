@@ -31,7 +31,6 @@ const NotFound = () => {
       document.documentElement.style.setProperty('--px', String((x / window.innerWidth - 0.5) * 2))
       document.documentElement.style.setProperty('--py', String((y / window.innerHeight - 0.5) * 2))
     }
-    console.log(document.readyState)
 
     if (document.readyState === 'complete') {
       load()

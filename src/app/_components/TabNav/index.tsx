@@ -26,7 +26,7 @@ const TabNav = ({ item }: RoutesProps) => {
     dispatch(getAllProjectFailed())
   }
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     // document.body.scrollTop = document.documentElement.scrollTop = 0
   }, [pathname])
 

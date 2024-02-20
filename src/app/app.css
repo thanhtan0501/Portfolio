@@ -70,7 +70,7 @@
     --step-8: clamp(4.30rem, calc(3.20rem + 5.48vw), 7.45rem);
     --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
 
-    --width: 724px;
+    --width: 824px;
   }
 
 }
@@ -192,4 +192,9 @@ select {
   100% {
     transform: rotate(360deg);
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
 }

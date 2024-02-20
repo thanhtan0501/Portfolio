@@ -12,8 +12,10 @@ import Footer from './_components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Payload Custom Server',
-  description: 'Serve Payload alongside any front-end framework.',
+  title: 'Tan Thanh Portfolio',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
