@@ -16,7 +16,7 @@ const Users: CollectionConfig = {
     {
       name: 'description',
       label: 'Description',
-      type: 'textarea',
+      type: 'richText',
     },
 
     {

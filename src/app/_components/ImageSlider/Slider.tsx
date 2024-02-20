@@ -40,6 +40,7 @@ const Slider = ({ data }: SliderProps) => {
         <button
           onClick={e => {
             e.preventDefault()
+            e.stopPropagation()
             swiper?.slideNext()
           }}
           className={`${activeStyles} right-3 transition hover:bg-surface-5 hover:border-surface-5 hover:text-white ${
@@ -52,6 +53,7 @@ const Slider = ({ data }: SliderProps) => {
         <button
           onClick={e => {
             e.preventDefault()
+            e.stopPropagation()
             swiper?.slidePrev()
           }}
           className={`${activeStyles} left-3 transition hover:bg-surface-5 hover:border-surface-5 hover:text-white  ${

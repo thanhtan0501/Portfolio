@@ -10,10 +10,10 @@ import {
   LocationIcon,
 } from '../../../assets/icon'
 import DateFormatter from '../FormatDate'
-import ContentBlock from '../ContentBlock'
 import { User } from '../../../payload-types'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { getUserSuccess } from '../../redux/slices/userSlice'
+import { RichText } from '../RichText'
 
 interface UserProps {
   user: User
@@ -27,8 +27,6 @@ const Description = ({ user }: UserProps) => {
       dispatch(getUserSuccess({ user }))
     }
   }, [user])
-
-  console.log('user:', user)
 
   return (
     <>
@@ -57,7 +55,7 @@ const Description = ({ user }: UserProps) => {
         {data.title || user.name}
       </h1>
       <div className="leading-tight mb-2">
-        <ContentBlock type="bio">{data.description || user.description}</ContentBlock>
+        <RichText content={data.description || user.description} />
       </div>
       <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
         {data && data.publishedAt ? (

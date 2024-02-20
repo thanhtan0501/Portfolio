@@ -22,7 +22,7 @@ export const Projects: CollectionConfig = {
     {
       name: 'description',
       label: 'Project Description',
-      type: 'textarea',
+      type: 'richText',
       required: true,
     },
     {
@@ -53,6 +53,7 @@ export const Projects: CollectionConfig = {
     {
       name: 'publishedAt',
       type: 'date',
+      required: true,
       admin: {
         position: 'sidebar',
       },
@@ -69,7 +70,6 @@ export const Projects: CollectionConfig = {
       name: 'link_demo',
       label: 'Link Demo',
       type: 'text',
-      required: true,
       admin: {
         position: 'sidebar',
       },
