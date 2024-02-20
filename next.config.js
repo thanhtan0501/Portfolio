@@ -13,7 +13,12 @@ module.exports = {
       {
         protocol: 'https',
         hostname: 'storage.cloud.google.com',
-        pathname: '/**',
+        pathname: '/portfolio-database-bucket/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        pathname: '/portfolio-database-bucket/**',
       },
       {
         protocol: 'https',

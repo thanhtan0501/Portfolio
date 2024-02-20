@@ -78,6 +78,7 @@ export default buildConfig({
         media: {
           adapter,
           disableLocalStorage: false,
+          // disablePayloadAccessControl: true,
         },
       },
     }),
