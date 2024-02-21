@@ -52,7 +52,7 @@ const FeedReel = () => {
     )
     const fetchData = async () => {
       try {
-        const req = await fetch(`/api/feeds?${projectQuery}`)
+        const req = await fetch(`https://portfolio-m47y.onrender.com/api/feeds?${projectQuery}`)
         const json = await req.json()
         clearTimeout(timer)
         const { docs } = json as { docs: Feed[] }

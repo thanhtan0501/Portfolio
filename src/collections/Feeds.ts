@@ -21,9 +21,7 @@ export const Feeds: CollectionConfig = {
       name: 'images',
       label: 'Feed Image(s)',
       type: 'array',
-      minRows: 1,
       maxRows: 4,
-      required: true,
       labels: {
         singular: 'Image',
         plural: 'Images',

@@ -20,6 +20,7 @@ const Card = ({ data }: { data: Project }) => {
     >
       <Link href={`/`} className="w-10 h-10 rounded-full">
         <Image
+          loader={() => user?.avatar?.url}
           src={user?.avatar?.url}
           alt="Author image"
           className="rounded-full bg-surface-4 object-cover object-center !w-10 !h-10"

@@ -78,7 +78,6 @@ export default buildConfig({
         media: {
           adapter,
           disableLocalStorage: false,
-          // disablePayloadAccessControl: true,
         },
         codes: {
           adapter,
@@ -87,12 +86,10 @@ export default buildConfig({
       },
     }),
   ],
-  cors: ['https://tanthanh.up.railway.app', process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
-  csrf: [
-    'https://tanthanh.up.railway.app',
-    process.env.PAYLOAD_PUBLIC_SERVER_URL,
-    process.env.NEXT_PUBLIC_PAYLOAD_URL,
-  ].filter(Boolean),
+  cors: [process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
+  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL, process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(
+    Boolean,
+  ),
   routes: {
     admin: '/admin',
   },

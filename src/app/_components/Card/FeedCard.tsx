@@ -18,6 +18,7 @@ const FeedCard = ({ data }: { data: Feed }) => {
       <div className="flex flex-row gap-[1vmin] items-center">
         <Link href={`/`} className="w-10 h-10 rounded-full">
           <Image
+            loader={() => user?.avatar?.url}
             src={user?.avatar?.url}
             alt="Author image"
             className="rounded-full bg-surface-4 object-cover object-center !w-10 !h-10"
@@ -40,7 +41,9 @@ const FeedCard = ({ data }: { data: Feed }) => {
       </div>
       <div className="card__content grid gap-y-2 leading-tight w-full">
         <RichText content={data.detail} />
-        <ImageSlider dataImage={data.images} isCustom={data.custom} />
+        {data.images && data.images.length > 0 && (
+          <ImageSlider dataImage={data.images} isCustom={data.custom} />
+        )}
       </div>
     </article>
   )

@@ -17,6 +17,11 @@ const Contact = () => {
     email: '',
     message: '',
   })
+  const [isError, setIsError] = useState({
+    name: false,
+    email: false,
+    message: false,
+  })
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -46,40 +51,51 @@ const Contact = () => {
     })
   }
 
+  const checkValidateInput = () => {
+    let isValid = true
+    for (let i in form) {
+      if (!form[i] && isError.hasOwnProperty(i)) {
+        setIsError(prev => ({ ...prev, [i]: true }))
+        isValid = false
+      }
+    }
+    return isValid
+  }
+
   const handleSubmit = (e: any) => {
     e.preventDefault()
-
-    console.log(form)
-
-    setLoading(true)
-    emailjs
-      .send(
-        'service_hi0h7ja',
-        'template_u4lsacc',
-        {
-          from_name: form.name,
-          from_email: form.email,
-          to_name: 'Tan Thanh',
-          message: form.message,
-        },
-        'oncPSwvmsGUNmOIC9',
-      )
-      .then(
-        () => {
-          setLoading(false)
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          })
-          alert('Thank you. I will get back to you as soon as possible.')
-        },
-        error => {
-          setLoading(false)
-          console.error(error)
-          alert('Ahh, something went wrong. Please try again.')
-        },
-      )
+    const checkValid = checkValidateInput()
+    if (checkValid) {
+      setLoading(true)
+      emailjs
+        .send(
+          'service_hi0h7ja',
+          'template_u4lsacc',
+          {
+            from_name: form.name,
+            from_email: form.email,
+            to_name: 'Tan Thanh',
+            message: form.message,
+          },
+          'oncPSwvmsGUNmOIC9',
+        )
+        .then(
+          () => {
+            setLoading(false)
+            setForm({
+              name: '',
+              email: '',
+              message: '',
+            })
+            alert('Thank you. I will get back to you as soon as possible.')
+          },
+          error => {
+            setLoading(false)
+            console.error(error)
+            alert('Ahh, something went wrong. Please try again.')
+          },
+        )
+    }
   }
 
   return (
@@ -98,7 +114,15 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Enter your name..."
-              className="bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full"
+              className={`bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full ${
+                isError.name && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+              }`}
+              onFocus={e => {
+                const { name } = e.target
+                if (isError[name]) {
+                  setIsError({ ...isError, [name]: false })
+                }
+              }}
             />
           </label>
           <label className="flex flex-col items-start w-full">
@@ -109,7 +133,15 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="Enter your email..."
-              className="!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full"
+              className={`!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full ${
+                isError.email && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+              }`}
+              onFocus={e => {
+                const { name } = e.target
+                if (isError[name]) {
+                  setIsError({ ...isError, [name]: false })
+                }
+              }}
             />
           </label>
           <label className="flex flex-col items-start w-full">
@@ -120,7 +152,15 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="Enter your message..."
-              className="!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white rounded-lg font-medium w-full resize-none placeholder:text-text-4"
+              className={`!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white rounded-lg font-medium w-full resize-none placeholder:text-text-4 ${
+                isError.message && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+              }`}
+              onFocus={e => {
+                const { name } = e.target
+                if (isError[name]) {
+                  setIsError({ ...isError, [name]: false })
+                }
+              }}
             />
           </label>
           <button
