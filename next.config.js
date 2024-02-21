@@ -28,6 +28,10 @@ module.exports = {
         protocol: 'https',
         hostname: 'portfolio-0gem.onrender.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'portfolio-m47y.onrender.com',
+      },
     ],
   },
 }
