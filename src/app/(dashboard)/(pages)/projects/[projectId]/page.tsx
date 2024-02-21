@@ -15,22 +15,16 @@ const Project = ({ params }: PageProps) => {
   const [project, setProject] = useState<Project>()
 
   useEffect(() => {
-    let timer: NodeJS.Timeout = null
+    setIsLoading(true)
 
-    timer = setTimeout(() => {
-      if (!isLoading) {
-        setIsLoading(true)
-      }
-    }, 500)
     const fetchData = async () => {
       console.log(params.projectId)
 
       try {
         const req = await fetch(
-          `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}?locale=undefined&draft=true&depth=2`,
+          `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}`,
         )
         const doc = await req.json()
-        clearTimeout(timer)
         if (doc) {
           setProject(doc)
           setIsLoading(false)
@@ -41,9 +35,6 @@ const Project = ({ params }: PageProps) => {
       }
     }
     fetchData()
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
   }, [])
 
   return (
