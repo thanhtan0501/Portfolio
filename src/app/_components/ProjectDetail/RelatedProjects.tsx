@@ -2,8 +2,6 @@
 import React from 'react'
 import { Project } from '../../../payload-types'
 import { LinkIcon } from '../../../assets/icon'
-import { Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import RelatedProjectCard from '../Card/RelatedProjectCard'
 
 const RelatedProjects = ({ data }: { data: Project[] }) => {

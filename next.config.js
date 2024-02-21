@@ -28,7 +28,6 @@ module.exports = {
       {
         protocol: 'https',
         hostname: 'thanhtan0501.vercel.app',
-        pathname: '/**',
       },
     ],
   },

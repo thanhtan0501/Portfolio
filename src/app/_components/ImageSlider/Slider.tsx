@@ -18,7 +18,7 @@ const Slider = ({ data }: SliderProps) => {
 
   const [slideConfig, setSlideConfig] = useState({
     isBeginning: true,
-    isEnd: activeIndex === (data.length ?? 0) - 1,
+    isEnd: activeIndex === (data?.length ?? 0) - 1,
   })
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Slider = ({ data }: SliderProps) => {
       setActiveIndex(activeIndex)
       setSlideConfig({
         isBeginning: activeIndex === 0,
-        isEnd: activeIndex === (data.length ?? 0) - 1,
+        isEnd: activeIndex === (data?.length ?? 0) - 1,
       })
     })
   }, [swiper, data])
@@ -78,9 +78,9 @@ const Slider = ({ data }: SliderProps) => {
         slidesPerView={1}
         className="h-full w-full rounded-lg"
       >
-        {data.map((url, i) => (
+        {data?.map((url, i) => (
           <SwiperSlide key={i} className="-z-10 relative h-full w-full rounded-lg">
-            {url.type.includes('image') && (
+            {url?.type?.includes('image') && (
               <Image
                 loading="eager"
                 className="-z-10 object-cover object-center rounded-lg w-full h-full"
@@ -91,7 +91,7 @@ const Slider = ({ data }: SliderProps) => {
                 alt="Project image"
               />
             )}
-            {url.type.includes('video') && (
+            {url?.type?.includes('video') && (
               <video
                 className="bg-surface-3 rounded-lg h-full object-contain"
                 src={url.link}

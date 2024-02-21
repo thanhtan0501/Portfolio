@@ -47,7 +47,7 @@ const Card = ({ data }: { data: Project }) => {
         </div>
         <h1 className="my-2 font-bold text-fluid-2">{data.title}</h1>
         <RichText content={data.description} />
-        {data.technologies && techArr && techArr.length > 0 && (
+        {data.technologies && techArr && techArr?.length > 0 && (
           <div className="inline-flex items-center gap-1 mt-2">
             {techArr
               .sort((a: any, b: any) => a - b)
