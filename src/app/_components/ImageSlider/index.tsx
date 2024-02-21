@@ -13,7 +13,7 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ dataImage, isCustom = '1' }: ImageSliderProps) => {
-  const urls = dataImage.reduce((accumulator, { image }) => {
+  const urls = dataImage?.reduce((accumulator, { image }) => {
     if (image.mimeType && image.url) {
       return [...accumulator, { type: image.mimeType, link: image.url }]
     } else {

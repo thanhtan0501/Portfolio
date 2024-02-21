@@ -41,7 +41,7 @@ const FeedCard = ({ data }: { data: Feed }) => {
       </div>
       <div className="card__content grid gap-y-2 leading-tight w-full">
         <RichText content={data.detail} />
-        {data.images && data.images.length > 0 && (
+        {data.images && data.images?.length > 0 && (
           <ImageSlider dataImage={data.images} isCustom={data.custom} />
         )}
       </div>
