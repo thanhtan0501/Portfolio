@@ -10,6 +10,7 @@ export const Codes: CollectionConfig = {
     read: () => true,
   },
   upload: {
+    staticURL: 'https://storage.cloud.google.com/portfolio-database-bucket',
     staticDir: path.resolve(__dirname, '/codes'),
     mimeTypes: ['*'],
   },
