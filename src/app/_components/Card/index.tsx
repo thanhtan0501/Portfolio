@@ -12,7 +12,6 @@ import { RichText } from '../RichText'
 const Card = ({ data }: { data: Project }) => {
   const { user } = useAppSelector(state => state.user)
   const techArr = Technologies.filter(item => data?.technologies.includes(item.value))
-
   return (
     <article
       data-project-id={data.id}
@@ -68,7 +67,6 @@ const Card = ({ data }: { data: Project }) => {
         <div className="bg-surface-3 rounded-lg w-full grid gap-y-2 leading-tight aspect-video">
           <ImageSlider dataImage={data.images} />
         </div>
-
         <div className="card__actions flex justify-end items-center">
           {true && (
             <Link

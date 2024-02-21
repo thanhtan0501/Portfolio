@@ -5,7 +5,6 @@ import Spinner from '../Spinner/Spinner'
 interface CodeProps {
   code: { title: string; code: string; url: string } | Code
 }
-
 const Banner = ({ code }: CodeProps) => {
   if (!code) <Spinner />
   return (

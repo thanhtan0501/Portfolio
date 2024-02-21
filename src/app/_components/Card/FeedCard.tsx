@@ -9,7 +9,6 @@ import ImageSlider from '../ImageSlider'
 
 const FeedCard = ({ data }: { data: Feed }) => {
   const { user } = useAppSelector(state => state.user)
-
   return (
     <article
       data-project-id={data.id}
@@ -32,7 +31,6 @@ const FeedCard = ({ data }: { data: Feed }) => {
           <Link href={'/'} className="hover:underline font-bold text-text-1">
             {user.name}
           </Link>
-          {/* <span>•</span> */}
           <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
             day: 'numeric',

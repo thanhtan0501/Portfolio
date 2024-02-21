@@ -15,9 +15,7 @@ type Result = {
   totalDocs: number
   totalPages: number
 }
-
 const LIMIT = 3
-
 const FeedReel = () => {
   const [page, setPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)

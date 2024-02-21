@@ -34,15 +34,9 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: ' - Portfolio',
-      //  favicon: './assets/favicon.png',
     },
     bundler: webpackBundler(),
-    components: {
-      graphics: {
-        // Logo: LogoIcon1,
-        // Icon: LogoIcon1,
-      },
-    },
+
     webpack: config => {
       const newConfig = {
         ...config,
@@ -78,7 +72,6 @@ export default buildConfig({
         media: {
           adapter,
           disableLocalStorage: false,
-          // disablePayloadAccessControl: true,
         },
         codes: {
           adapter,
