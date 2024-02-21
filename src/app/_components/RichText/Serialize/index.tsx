@@ -209,7 +209,7 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
             return (
               <figure key={i} className="grid place-items-center my-6 aspect-[5/2]">
                 <img
-                  className="rounded-lg mb-2 max-h-[350px] w-full h-full object-cover"
+                  className="rounded-lg mb-2 max-h-[350px] w-auto h-full object-cover"
                   src={data.url}
                 />
                 {data?.description && data.description !== '' && (
