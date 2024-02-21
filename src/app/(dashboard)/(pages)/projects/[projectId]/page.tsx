@@ -23,6 +23,8 @@ const Project = ({ params }: PageProps) => {
       }
     }, 500)
     const fetchData = async () => {
+      console.log(params.projectId)
+
       try {
         const req = await fetch(
           `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}?locale=undefined&draft=true&depth=2`,
