@@ -51,11 +51,12 @@ export default async function page({ params }: PageProps) {
 
   return (
     <>
-      {!project ? (
+      {!project && !isLoading && (
         <p className="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md">
           {`This project is not available.`}
         </p>
-      ) : (
+      )}
+      {project && !isLoading && (
         <>
           <ProjectDetail data={project} />
           <Technologies data={project.technologies} />
