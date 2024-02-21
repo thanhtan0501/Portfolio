@@ -9,6 +9,7 @@ interface CodeProps {
 
 const Banner = ({ code }: CodeProps) => {
   if (!code) <Spinner />
+  console.log('code: ', code)
 
   return (
     <div className="w-full aspect-[5/2] bg-surface-3 rounded-lg shadow-md">
