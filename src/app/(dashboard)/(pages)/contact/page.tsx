@@ -64,6 +64,9 @@ const Contact = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
+
+    console.log(isError)
+
     const checkValid = checkValidateInput()
     if (checkValid) {
       setLoading(true)
@@ -115,7 +118,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Enter your name..."
               className={`bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full ${
-                isError.name && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+                isError.name && '!border-red-600 hover:!border-red-600 placeholder:!text-red-300'
               }`}
               onFocus={e => {
                 const { name } = e.target
@@ -134,7 +137,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Enter your email..."
               className={`!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white placeholder:text-text-4 rounded-lg font-medium w-full ${
-                isError.email && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+                isError.email && '!border-red-600 hover:!border-red-600 placeholder:!text-red-300'
               }`}
               onFocus={e => {
                 const { name } = e.target
@@ -153,7 +156,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Enter your message..."
               className={`!bg-surface-3 hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-2 transition-all py-4 px-6 !text-white rounded-lg font-medium w-full resize-none placeholder:text-text-4 ${
-                isError.message && 'border-red-600 hover:border-red-600 placeholder:text-red-300'
+                isError.message && '!border-red-600 hover:!border-red-600 placeholder:!text-red-300'
               }`}
               onFocus={e => {
                 const { name } = e.target
