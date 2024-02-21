@@ -204,12 +204,13 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
                 ></iframe>
               )
             }
+            console.log(data)
 
             return (
               <figure key={i} className="grid place-items-center my-6 aspect-[5/2]">
                 <img
                   className="rounded-lg mb-2 max-h-[350px] w-full h-full object-cover"
-                  src={data?.url}
+                  src={data.url}
                 />
                 {data?.description && data.description !== '' && (
                   <figcaption className="text-text-3 text-fluid--2">{data.description}</figcaption>
