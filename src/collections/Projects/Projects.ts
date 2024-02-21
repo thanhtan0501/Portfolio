@@ -7,10 +7,6 @@ export const Projects: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'updatedAt', 'publishedAt'],
   },
-  hooks: {},
-  versions: {
-    drafts: true,
-  },
   access: { read: () => true },
   fields: [
     {

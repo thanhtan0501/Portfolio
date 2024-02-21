@@ -18,6 +18,7 @@ const FeedCard = ({ data }: { data: Feed }) => {
       <div className="flex flex-row gap-[1vmin] items-center">
         <Link href={`/`} className="w-10 h-10 rounded-full">
           <Image
+            unoptimized={true}
             loader={() => user?.avatar?.url}
             src={user?.avatar?.url}
             alt="Author image"

@@ -8,7 +8,7 @@ interface PageProps {
     projectId: string
   }
 }
-export default async function page({ params }: PageProps) {
+const Project = async ({ params }: PageProps) => {
   const { project } = await getProjectById({ id: params.projectId })
 
   return (
@@ -28,3 +28,4 @@ export default async function page({ params }: PageProps) {
     </>
   )
 }
+export default Project
