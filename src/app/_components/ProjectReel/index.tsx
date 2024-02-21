@@ -53,7 +53,7 @@ const ProjectReel = () => {
     )
     const fetchData = async () => {
       try {
-        const req = await fetch(`/api/projects?${projectQuery}`)
+        const req = await fetch(`https://portfolio-m47y.onrender.com/api/projects?${projectQuery}`)
         const json = await req.json()
         clearTimeout(timer)
         hasHydrated.current = true

@@ -12,7 +12,7 @@ import Footer from './_components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Tan Thanh Portfolio',
+  title: 'Tan Thanh - Developer',
   icons: {
     icon: '/favicon.svg',
   },

@@ -1,5 +1,4 @@
 'use client'
-
 import { Code } from '../../../payload-types'
 import Spinner from '../Spinner/Spinner'
 
@@ -9,8 +8,6 @@ interface CodeProps {
 
 const Banner = ({ code }: CodeProps) => {
   if (!code) <Spinner />
-  console.log('code: ', code)
-
   return (
     <div className="w-full aspect-[5/2] bg-surface-3 rounded-lg shadow-md">
       {code && code.url && code?.title && (

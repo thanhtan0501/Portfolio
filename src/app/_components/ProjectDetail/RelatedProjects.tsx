@@ -25,7 +25,7 @@ const RelatedProjects = ({ data }: { data: Project[] }) => {
               <LinkIcon className="w-5 h-5" />
             </a>
           </h2>
-          <div className=" h-max grid  grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 p-4 gap-4">
+          <div className=" h-max grid  grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 py-4 gap-4">
             {data.map((item, i) => (
               <div key={i} className="h-full w-full rounded-lg">
                 <RelatedProjectCard data={item} />

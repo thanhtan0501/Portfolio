@@ -98,6 +98,7 @@ const Slider = ({ data }: SliderProps) => {
                 width="100%"
                 controls
                 loop
+                controlsList="nodownload"
               />
             )}
           </SwiperSlide>
