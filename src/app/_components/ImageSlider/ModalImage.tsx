@@ -29,6 +29,7 @@ const ModalImage = ({ alt, className, src, width = 1280, height = 1280 }: ModalI
       <Image
         alt={alt}
         className={`rounded-lg object-cover flex-1 overflow-hidden w-full max-h-full h-full object-center cursor-pointer ${className}`}
+        unoptimized={true}
         loader={() => src}
         src={src}
         width={width}
@@ -53,6 +54,7 @@ const ModalImage = ({ alt, className, src, width = 1280, height = 1280 }: ModalI
             <Image
               alt="Image feed"
               className={`rounded-lg object-cover flex-1 overflow-hidden w-full max-h-full h-full object-center`}
+              unoptimized={true}
               loader={() => src}
               src={src}
               width={width}

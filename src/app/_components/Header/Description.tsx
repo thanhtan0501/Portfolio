@@ -32,6 +32,7 @@ const Description = ({ user }: UserProps) => {
       <div className="relative flex justify-end items-center min-h-half-avatar py-2 pt-6">
         <Image
           className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-2 object-cover object-center shadow"
+          unoptimized={true}
           loader={() => user.avatar?.url}
           src={user.avatar?.url}
           alt="Thanh Tan"
