@@ -84,6 +84,7 @@ const Slider = ({ data }: SliderProps) => {
               <Image
                 loading="eager"
                 className="-z-10 object-cover object-center rounded-lg w-full h-full"
+                unoptimized={true}
                 loader={() => url.link}
                 src={url.link}
                 width={750}
