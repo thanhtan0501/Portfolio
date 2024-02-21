@@ -25,6 +25,11 @@ module.exports = {
         hostname: 'portfolio-m47y.onrender.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'thanhtan0501.vercel.app',
+        pathname: '/**',
+      },
     ],
   },
 }

@@ -78,6 +78,7 @@ export default buildConfig({
         media: {
           adapter,
           disableLocalStorage: false,
+          // disablePayloadAccessControl: true,
         },
         codes: {
           adapter,
@@ -86,10 +87,17 @@ export default buildConfig({
       },
     }),
   ],
-  cors: [process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(Boolean),
-  csrf: [process.env.PAYLOAD_PUBLIC_SERVER_URL, process.env.NEXT_PUBLIC_PAYLOAD_URL].filter(
-    Boolean,
-  ),
+  cors: [
+    'https://thanhtan0501.vercel.app',
+    'http://localhost:3000',
+    process.env.NEXT_PUBLIC_PAYLOAD_URL,
+  ].filter(Boolean),
+  csrf: [
+    'https://thanhtan0501.vercel.app',
+    'http://localhost:3000',
+    process.env.PAYLOAD_PUBLIC_SERVER_URL,
+    process.env.NEXT_PUBLIC_PAYLOAD_URL,
+  ].filter(Boolean),
   routes: {
     admin: '/admin',
   },

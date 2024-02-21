@@ -52,6 +52,7 @@ const FeedReel = () => {
     )
     const fetchData = async () => {
       try {
+        // https://data.mongodb-api.com/app/data-waqzr/endpoint/data/v1
         const req = await fetch(`https://portfolio-m47y.onrender.com/api/feeds?${projectQuery}`)
         const json = await req.json()
         clearTimeout(timer)
