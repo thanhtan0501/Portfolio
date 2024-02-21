@@ -1,4 +1,3 @@
-import React from 'react'
 import { getPayloadClient } from '../../../../getPayload'
 import { Page } from '../../../../payload-types'
 import NotFound from '../../../not-found'

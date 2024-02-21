@@ -6,11 +6,11 @@ import Link from 'next/link'
 import { Technologies } from '../../../config'
 
 const RelatedProjectCard = ({ data }: { data: Project }) => {
-  const techArr = Technologies.filter(item => data?.technologies.includes(item.value))
+  const techArr = Technologies.filter(item => data?.technologies?.includes(item.value))
   if (!data) <Spinner />
   return (
     <>
-      {data && data.images.length > 0 && data.title && (
+      {data && data.images?.length > 0 && data.title && (
         <Link title="Permalink" href={`/projects/${data.id}`} className="h-full flex-1">
           <article
             data-project-id={data.id}

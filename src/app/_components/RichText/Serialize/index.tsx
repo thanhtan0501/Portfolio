@@ -173,12 +173,14 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
               return (
                 <video
                   key={i}
-                  className="rounded-lg h-[350px] my-4"
-                  src={data.url}
+                  className="rounded-lg max-h-[350px] my-4 bg-surface-3 w-full"
+                  src={data?.url}
                   width="100%"
+                  height="100%"
                   controls
                   loop
-                ></video>
+                  controlsList="nodownload"
+                />
               )
             }
             if (data?.mimeType.includes('audio')) {
@@ -186,9 +188,10 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
                 <audio
                   key={i}
                   className="rounded-lg w-full my-4"
-                  src={data.url}
+                  src={data?.url}
                   controls
                   loop
+                  controlsList="nodownload"
                 ></audio>
               )
             }
@@ -196,7 +199,7 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
               return (
                 <iframe
                   key={i}
-                  src={data.url}
+                  src={data?.url}
                   loading="lazy"
                   className="rounded-lg w-full my-4"
                   height="350px"
@@ -204,13 +207,11 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
                 ></iframe>
               )
             }
-            console.log(data)
-
             return (
               <figure key={i} className="grid place-items-center my-6 aspect-[5/2]">
                 <img
                   className="rounded-lg mb-2 max-h-[350px] w-auto h-full object-cover"
-                  src={data.url}
+                  src={data?.url}
                 />
                 {data?.description && data.description !== '' && (
                   <figcaption className="text-text-3 text-fluid--2">{data.description}</figcaption>
