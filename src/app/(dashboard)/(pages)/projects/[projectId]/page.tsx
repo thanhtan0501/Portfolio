@@ -44,7 +44,7 @@ const Project = ({ params }: PageProps) => {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [params.projectId])
+  }, [])
 
   return (
     <>
