@@ -80,6 +80,10 @@ export default buildConfig({
           disableLocalStorage: false,
           // disablePayloadAccessControl: true,
         },
+        codes: {
+          adapter,
+          disableLocalStorage: false,
+        },
       },
     }),
   ],
