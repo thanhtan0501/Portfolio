@@ -3,7 +3,6 @@ import '../styles/404.css'
 import React, { useEffect } from 'react'
 
 const EXEMPT_JIGGLES = [0, 1, 4, 6, 7]
-
 const NotFound = () => {
   const getRandom = () => Math.floor(Math.random() * 200) - 100
 
@@ -53,12 +52,7 @@ const NotFound = () => {
           <h1 aria-hidden="true" className="font-mono font-bold text-fluid-9">
             {'404'.split('').map((l, i) => {
               return (
-                <span
-                  id={`jiggle-404--${i}`}
-                  key={i}
-                  data-jiggle-404
-                  // style={{ '--mx': `${getRandom()}`, '--my': `${getRandom()}` }}
-                >
+                <span id={`jiggle-404--${i}`} key={i} data-jiggle-404>
                   {l}
                 </span>
               )

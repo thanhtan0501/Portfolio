@@ -1,10 +1,8 @@
 import React from 'react'
-import { Suspense } from 'react'
 import { ROUTES } from '../../../utils/routes'
 import Header from '../../_components/Header'
 import TabNav from '../../_components/TabNav'
 import Wrapper from '../../_components/Wrapper'
-import Spinner from '../../_components/Spinner/Spinner'
 
 const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,11 +11,9 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-feature max-w-full mx-auto pb-2">
         <TabNav item={ROUTES} />
       </div>
-      <Suspense fallback={<Spinner />}>
-        <div className="flex-grow flex-1 relative overflow-x-hidden">
-          <Wrapper>{children}</Wrapper>
-        </div>
-      </Suspense>
+      <div className="flex-grow flex-1 relative overflow-x-hidden">
+        <Wrapper>{children}</Wrapper>
+      </div>
     </>
   )
 }

@@ -1,7 +1,5 @@
 'use client'
-
 import React, { useEffect, useState } from 'react'
-import { getProjectById } from '../../../../api/projectApi'
 import ProjectDetail from '../../../../_components/ProjectDetail'
 import Technologies from '../../../../_components/ProjectDetail/Technologies'
 import RelatedProjects from '../../../../_components/ProjectDetail/RelatedProjects'
@@ -12,8 +10,7 @@ interface PageProps {
     projectId: string
   }
 }
-export default async function page({ params }: PageProps) {
-  // const { projects } = await getProjectById({ id: params.projectId })
+const Project = ({ params }: PageProps) => {
   const [isLoading, setIsLoading] = useState(true)
   const [project, setProject] = useState<Project>()
 
@@ -31,7 +28,6 @@ export default async function page({ params }: PageProps) {
           `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}?locale=undefined&draft=true&depth=2`,
         )
         const doc = await req.json()
-        console.log(doc)
         clearTimeout(timer)
         if (doc) {
           setProject(doc)
@@ -65,3 +61,4 @@ export default async function page({ params }: PageProps) {
     </>
   )
 }
+export default Project

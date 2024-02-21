@@ -11,7 +11,6 @@ const Nav = () => {
       >
         <LogoIcon1 className={'w-9'} />
       </Link>
-      {/* <ThemeToggle /> */}
     </nav>
   )
 }

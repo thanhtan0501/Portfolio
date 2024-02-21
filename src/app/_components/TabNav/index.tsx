@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ROUTES } from '../../../utils/routes'
 import { useAppDispatch } from '../../../hooks/hooks'
 import { getAllProjectFailed } from '../../redux/slices/projectSlice'
@@ -25,10 +25,6 @@ const TabNav = ({ item }: RoutesProps) => {
   } else {
     dispatch(getAllProjectFailed())
   }
-  useEffect(() => {
-    // window.scrollTo(0, 0)
-    // document.body.scrollTop = document.documentElement.scrollTop = 0
-  }, [pathname])
 
   return (
     <div data-tabs="true" role="navigation">
