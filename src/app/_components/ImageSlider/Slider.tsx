@@ -84,6 +84,7 @@ const Slider = ({ data }: SliderProps) => {
               <Image
                 loading="eager"
                 className="-z-10 object-cover object-center rounded-lg w-full h-full"
+                loader={() => url.link}
                 src={url.link}
                 width={750}
                 height={500}
@@ -92,7 +93,7 @@ const Slider = ({ data }: SliderProps) => {
             )}
             {url.type.includes('video') && (
               <video
-                className="bg-surface-3 rounded-lg h-[350px] object-contain"
+                className="bg-surface-3 rounded-lg h-full object-contain"
                 src={url.link}
                 width="100%"
                 controls

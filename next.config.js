@@ -22,15 +22,8 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'tanthanh.up.railway.app',
-      },
-      {
-        protocol: 'https',
-        hostname: 'portfolio-0gem.onrender.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'portfolio-m47y.onrender.com',
+        pathname: '/**',
       },
     ],
   },
