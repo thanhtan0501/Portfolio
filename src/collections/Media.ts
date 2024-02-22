@@ -14,7 +14,7 @@ export const Media: CollectionConfig = {
     useAsTitle: 'alt',
   },
   upload: {
-    staticURL: 'https://storage.cloud.google.com/portfolio-database-bucket',
+    staticURL: 'https://storage.googleapis.com/portfolio-database-bucket',
     staticDir: path.resolve(__dirname, '/media'),
     mimeTypes: ['image/*', 'audio/*', 'video/*', 'application/pdf'],
   },
