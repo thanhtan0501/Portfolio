@@ -25,12 +25,14 @@
     ]
   },
   "include": [
+    "src/**/*",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "handler/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules", "**/*.spec.ts"
   ],
   "ts-node": {
     "transpileOnly": true,

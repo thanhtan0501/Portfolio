@@ -9,7 +9,7 @@ import { LogoIcon } from '../assets/icon'
 import Nav from './_components/Nav'
 import Footer from './_components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
 
 export const metadata = {
   title: 'Tan Thanh - Developer',
