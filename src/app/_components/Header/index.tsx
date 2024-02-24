@@ -8,9 +8,7 @@ const Header = async () => {
   return (
     <header className="w-feature max-w-full mx-auto pb-2">
       <Banner code={user.code} />
-      <div className="w-content max-w-full mv-0 mx-auto grid gap-2 p-4 pt-0">
-        <Description user={user} />
-      </div>
+      <Description user={user} />
     </header>
   )
 }
