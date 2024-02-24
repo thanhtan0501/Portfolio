@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import {
   BirthdayIcon,
@@ -13,6 +13,7 @@ import { User } from '../../../payload-types'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { getUserSuccess } from '../../redux/slices/userSlice'
 import { RichText } from '../RichText'
+import Spinner from '../Spinner/Spinner'
 
 interface UserProps {
   user: User
@@ -26,9 +27,11 @@ const Description = ({ user }: UserProps) => {
       dispatch(getUserSuccess({ user }))
     }
   }, [user])
+
+  if (!user || !data) <Spinner />
   return (
-    <>
-      <div className="relative flex justify-end items-center min-h-half-avatar py-2 pt-6">
+    <div className="w-content max-w-full mx-auto grid gap-2 p-4 pt-0">
+      <div className="relative flex justify-end items-center min-h-half-avatar py-2 pt-6 ">
         <Image
           className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-2 object-cover object-center shadow"
           unoptimized={true}
@@ -99,7 +102,7 @@ const Description = ({ user }: UserProps) => {
           </>
         )}
       </span>
-    </>
+    </div>
   )
 }
 

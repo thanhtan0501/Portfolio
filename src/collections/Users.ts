@@ -18,7 +18,6 @@ const Users: CollectionConfig = {
       label: 'Description',
       type: 'richText',
     },
-
     {
       name: 'birthday',
       label: 'Birthday',

@@ -47,7 +47,7 @@ const NotFound = () => {
 
   return (
     <>
-      <main className="w-main-content flex justify-center items-center grow max-w-full mv-0 mx-auto px-4">
+      <main className="w-main-content flex justify-center items-center grow max-w-full mv-0 mx-auto px-4 touch-auto">
         <div className="grid place-items-center leading-tight">
           <h1 aria-hidden="true" className="font-mono font-bold text-fluid-9">
             {'404'.split('').map((l, i) => {
