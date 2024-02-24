@@ -26,11 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`min-h-screen h-full font-sans antialiased ${inter.className}`}>
         <StoreProvider>
           <LogoIcon w="990" h="955" className="watermark-panda" />
-          <Nav />
           <main className="relative flex flex-col min-h-screen">
+            <Nav />
             <div className="flex-grow flex-1 flex flex-col h-full">{children}</div>
+            <Footer />
           </main>
-          <Footer />
         </StoreProvider>
       </body>
     </html>
