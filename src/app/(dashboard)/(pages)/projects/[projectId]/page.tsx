@@ -4,10 +4,10 @@ import ProjectDetail from '../../../../_components/ProjectDetail'
 import Technologies from '../../../../_components/ProjectDetail/Technologies'
 import RelatedProjects from '../../../../_components/ProjectDetail/RelatedProjects'
 import { Project } from '../../../../../payload-types'
-import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
 
 const Project = () => {
-  const router = useRouter()
+  const params = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [project, setProject] = useState<Project>()
 
@@ -15,21 +15,19 @@ const Project = () => {
     setIsLoading(true)
 
     const fetchData = async () => {
-      console.log(router.query.projectId)
-
-      // try {
-      //   const req = await fetch(
-      //     `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}`,
-      //   )
-      //   const doc = await req.json()
-      //   if (doc) {
-      //     setProject(doc)
-      //     setIsLoading(false)
-      //   }
-      // } catch (error) {
-      //   console.warn(error)
-      //   setIsLoading(false)
-      // }
+      try {
+        const req = await fetch(
+          `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}`,
+        )
+        const doc = await req.json()
+        if (doc) {
+          setProject(doc)
+          setIsLoading(false)
+        }
+      } catch (error) {
+        console.warn(error)
+        setIsLoading(false)
+      }
     }
     fetchData()
   }, [])
