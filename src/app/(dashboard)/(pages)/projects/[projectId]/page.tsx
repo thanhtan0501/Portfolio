@@ -20,19 +20,19 @@ const Project = ({ params }: PageProps) => {
     const fetchData = async () => {
       console.log(params.projectId)
 
-      try {
-        const req = await fetch(
-          `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}`,
-        )
-        const doc = await req.json()
-        if (doc) {
-          setProject(doc)
-          setIsLoading(false)
-        }
-      } catch (error) {
-        console.warn(error)
-        setIsLoading(false)
-      }
+      // try {
+      //   const req = await fetch(
+      //     `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params.projectId}`,
+      //   )
+      //   const doc = await req.json()
+      //   if (doc) {
+      //     setProject(doc)
+      //     setIsLoading(false)
+      //   }
+      // } catch (error) {
+      //   console.warn(error)
+      //   setIsLoading(false)
+      // }
     }
     fetchData()
   }, [])

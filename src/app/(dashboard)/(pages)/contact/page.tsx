@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from 'react'
 import { AstroBearIcon, MoonIcon } from '../../../../assets/icon'
 import emailjs from '@emailjs/browser'
 import gsap from 'gsap'
-import '../../../../styles/starts.css'
+import '../../../../styles/stars.css'
 
 const Contact = () => {
   const formRef = useRef()
   const astroRef = useRef(null)
   const moonRef = useRef(null)
 
-  const [starts, setStarts] = useState([])
+  const [stars, setStars] = useState([])
 
   const [form, setForm] = useState({
     name: '',
@@ -25,7 +25,7 @@ const Contact = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setStarts(
+      setStars(
         prev =>
           (prev = new Array(30).fill(undefined).map(() => ({
             id: crypto.randomUUID(),
@@ -102,7 +102,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="mt-6 min-h-screen flex items-center justify-end flex-col-reverse lg:flex-row lg:justify-between pt-20 gap-8 lg:pt-40">
+    <div className="mt-6 min-h-screen flex items-center justify-end flex-col-reverse lg:flex-row lg:justify-between pt-10 gap-8 lg:pt-40">
       <div className="w-content max-w-[80%] lg:max-w-[55%] mv-0 mx-auto grid gap-2 py-4 px-6 bg-surface-2 rounded-lg shadow-lg">
         <form
           className="my-4 flex flex-col gap-y-4 justify-center text-center"
@@ -175,17 +175,26 @@ const Contact = () => {
         </form>
       </div>
       <div className="stars">
-        {starts.map(start => {
+        <div
+          style={{
+            top: `${gsap.utils.random(0, 100)}%`,
+            animation: `horizontal calc(5 * 1s) calc(5 * 1s) linear reverse infinite`,
+          }}
+          className="astrobear"
+        >
+          <AstroBearIcon innerRef={astroRef} />
+        </div>
+        {stars.map(star => {
           return (
             <div
               className="star"
-              key={start.id}
+              key={star.id}
               style={{
-                width: `calc(${start.size} * 1px)`,
-                left: `calc(${start.x} * 1px)`,
-                opacity: `calc(${start.opacity || 1} * 1px)`,
-                animation: `float calc(${start.speed || 0} * 1s) calc(${
-                  start.delay || 0
+                width: `calc(${star.size} * 1px)`,
+                left: `calc(${star.x} * 1px)`,
+                opacity: `calc(${star.opacity || 1} * 1px)`,
+                animation: `float calc(${star.speed || 0} * 1s) calc(${
+                  star.delay || 0
                 } * 1s) linear reverse infinite`,
               }}
             ></div>
@@ -193,7 +202,6 @@ const Contact = () => {
         })}
       </div>
       <MoonIcon innerRef={moonRef} />
-      <AstroBearIcon innerRef={astroRef} />
     </div>
   )
 }
