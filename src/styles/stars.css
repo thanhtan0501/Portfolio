@@ -10,6 +10,18 @@
     }
 }
 
+@-webkit-keyframes horizontal {
+    to {
+        translate: calc(-100vw + -100%) -50%;
+    }
+}
+
+@keyframes horizontal {
+    to {
+        translate: calc(-100vw + -100%) -50%;
+    }
+}
+
 .stars {
     position: absolute;
     inset: 0;
@@ -36,8 +48,7 @@
 .astrobear {
     width: 4vmin;
     opacity: 1;
-    top: 10%;
-    right: 25%;
+    left: 100%;
     position: absolute;
     overflow: visible !important;
 }
