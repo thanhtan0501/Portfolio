@@ -18,7 +18,9 @@ const Project = () => {
 
     const fetchData = async () => {
       try {
-        const req = await fetch(`/api/projects/${params?.projectId}`)
+        const req = await fetch(
+          `${process.env.NEXT_PUBLIC_DATA_API_URL}/api/projects/${params?.projectId}`,
+        )
         const doc = await req.json()
         if (doc) {
           setProject(doc)
