@@ -4,13 +4,10 @@ import ProjectDetail from '../../../../_components/ProjectDetail'
 import Technologies from '../../../../_components/ProjectDetail/Technologies'
 import RelatedProjects from '../../../../_components/ProjectDetail/RelatedProjects'
 import { Project } from '../../../../../payload-types'
+import { useRouter } from 'next/router'
 
-interface PageProps {
-  params: {
-    projectId: string
-  }
-}
-const Project = ({ params }: PageProps) => {
+const Project = () => {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
   const [project, setProject] = useState<Project>()
 
@@ -18,7 +15,7 @@ const Project = ({ params }: PageProps) => {
     setIsLoading(true)
 
     const fetchData = async () => {
-      console.log(params.projectId)
+      console.log(router.query.projectId)
 
       // try {
       //   const req = await fetch(
