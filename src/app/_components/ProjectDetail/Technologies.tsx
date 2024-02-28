@@ -8,13 +8,13 @@ const Technologies = ({ data }: { data: String[] }) => {
   return (
     <div>
       <h2
-        id="technologies"
+        id="TECHNOLOGIES"
         tabIndex={-1}
         className="scroll-mt-16 flex gap-x-2 items-center mt-5 font-bold uppercase text-fluid-1 mb-2"
       >
         <span>Technologies</span>
         <a
-          href="#technologies"
+          href="#TECHNOLOGIES"
           title="permalink"
           className="w-11 h-11 text-text-1 grid place-items-center hover:bg-surface-4 rounded-md hover:text-brand-stroke transition-all"
         >

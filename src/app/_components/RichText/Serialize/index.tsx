@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import escapeHTML from 'escape-html'
 import Link from 'next/link'
+import { LinkIcon } from '../../../../assets/icon'
 
 type Node = {
   type: string
@@ -88,42 +89,50 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </h1>
             )
-
           case 'h2':
             return (
-              <h2 key={i} className="mb-2 font-bold text-fluid-2">
-                <Serialize content={node.children} customRenderers={customRenderers} />
+              <h2
+                id={`${node.children[0].text}`}
+                key={i}
+                tabIndex={-1}
+                className="scroll-mt-16 flex gap-x-2 items-center mt-5 font-bold uppercase text-fluid-1 mb-2"
+              >
+                <span>
+                  <Serialize content={node.children} customRenderers={customRenderers} />
+                </span>
+                <a
+                  href={`#${node.children[0].text}`}
+                  title="permalink"
+                  className="w-11 h-11 text-text-1 grid place-items-center hover:bg-surface-4 rounded-md hover:text-brand-stroke transition-all"
+                >
+                  <LinkIcon className="w-5 h-5" />
+                </a>
               </h2>
             )
-
           case 'h3':
             return (
               <h3 key={i} className="font-bold mb-6">
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </h3>
             )
-
           case 'h4':
             return (
               <h4 key={i}>
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </h4>
             )
-
           case 'h5':
             return (
               <h5 key={i}>
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </h5>
             )
-
           case 'h6':
             return (
               <h6 key={i}>
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </h6>
             )
-
           case 'quote':
             return (
               <blockquote key={i}>
@@ -133,21 +142,21 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
 
           case 'ul':
             return (
-              <ul key={i}>
+              <ul key={i} className="list-disc pl-8 mb-2">
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </ul>
             )
 
           case 'ol':
             return (
-              <ol key={i}>
+              <ol key={i} className="list-decimal pl-8 mb-2">
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </ol>
             )
 
           case 'li':
             return (
-              <li key={i}>
+              <li key={i} className="pl-1">
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </li>
             )
@@ -155,7 +164,7 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
           case 'link':
             return (
               <Link
-                href={escapeHTML(node.url)}
+                href={node.url}
                 key={i}
                 {...(node.newTab
                   ? {
@@ -163,6 +172,7 @@ export const Serialize: SerializeFunction = ({ content, customRenderers }) => {
                       rel: 'noopener noreferrer',
                     }
                   : {})}
+                className="text-[#2f81f7]"
               >
                 <Serialize content={node.children} customRenderers={customRenderers} />
               </Link>

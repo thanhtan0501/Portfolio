@@ -5,6 +5,7 @@ import Technologies from '../../../../_components/ProjectDetail/Technologies'
 import RelatedProjects from '../../../../_components/ProjectDetail/RelatedProjects'
 import { Project } from '../../../../../payload-types'
 import { useParams } from 'next/navigation'
+import Spinner from '../../../../_components/Spinner/Spinner'
 
 const Project = () => {
   const params = useParams()
@@ -32,6 +33,10 @@ const Project = () => {
     fetchData()
   }, [])
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
     <>
       {!project && !isLoading && (
@@ -40,11 +45,11 @@ const Project = () => {
         </p>
       )}
       {project && !isLoading && (
-        <>
+        <div>
           <ProjectDetail data={project} />
           <Technologies data={project.technologies} />
           <RelatedProjects data={project.relatedProjects} />
-        </>
+        </div>
       )}
     </>
   )
