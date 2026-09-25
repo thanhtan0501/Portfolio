@@ -47,4 +47,3 @@ The script reads metadata only; it does not download or probe each media URL.
 - `path.resolve(__dirname, '/media')` and `/codes` are absolute root paths, not project-relative paths.
 
 These are implementation facts, not a recommendation to migrate storage in R0.
-

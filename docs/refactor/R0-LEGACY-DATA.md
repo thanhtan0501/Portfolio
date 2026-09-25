@@ -57,4 +57,3 @@ Other collections are filtered to content/media fields only. Export metadata con
 - broken or expired GCS URLs;
 - media object sizes and storage hosts;
 - whether any legacy content contains private personal information requiring fixture redaction.
-

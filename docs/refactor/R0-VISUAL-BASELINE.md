@@ -77,4 +77,3 @@ Preferred storage: `docs/refactor/baseline/screenshots/`. The directory is inten
 ## Capture blocker
 
 Exact visual capture requires either a browser surface with screenshot persistence and viewport control or an explicitly authorized local/production browser workflow. Do not infer screenshot parity from source inspection alone.
-

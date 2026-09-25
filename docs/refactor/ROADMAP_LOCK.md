@@ -1,6 +1,6 @@
 # Portfolio V2 roadmap lock
 
-Status: LOCKED  
+Status: LOCKED
 Scope of this run: R0 only
 
 ## Locked roadmap
@@ -57,4 +57,3 @@ R14 = intentional portfolio evolution
 ## Protected V1 behavior
 
 The dark charcoal/gray hierarchy, narrow centered composition, panda logo/watermark, fluid typography, rounded surfaces, profile header, tab rhythm, feed/project cards, CMS content concepts, collage/slider/gallery modes, image modal, media support, contact scene, and playful 404 remain protected throughout the roadmap.
-

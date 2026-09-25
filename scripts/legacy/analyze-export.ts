@@ -30,4 +30,3 @@ for (const name of files) {
 
   console.log(`${name}: records=${Array.isArray(data) ? data.length : 1}; fields=${keySummary || 'none'}`)
 }
-

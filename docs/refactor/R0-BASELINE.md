@@ -40,7 +40,8 @@ The working tree was not clean at R0 start. Pre-existing changes were preserved:
 
 ## CMS definitions
 
-Collections: `users`, `media`, `projects`, `pages`, `codes`, `feeds`.  
+Collections: `users`, `media`, `projects`, `pages`, `codes`, `feeds`.
+
 Global: `footer`.
 
 ## External providers
@@ -70,4 +71,3 @@ R0 does not install dependencies or repair these blockers. They belong to R1.
 - V1 source: tag/commit above.
 - Current-state audit: `docs/codebase-audit/`.
 - R0 lock and handoff: `docs/refactor/`.
-

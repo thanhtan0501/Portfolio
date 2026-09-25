@@ -44,4 +44,3 @@ console.log(`missing URL count: ${missingUrl}`)
 console.log(`malformed URL count: ${malformedUrl}`)
 console.log(`MIME breakdown: ${JSON.stringify(Object.fromEntries(mime))}`)
 console.log(`storage hosts: ${JSON.stringify(Object.fromEntries(hosts))}`)
-

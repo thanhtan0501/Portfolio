@@ -41,4 +41,3 @@ if (violations.length > 0) {
 }
 
 console.log('Legacy export structure is present and contains no forbidden auth/secret field names.')
-

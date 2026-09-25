@@ -6,9 +6,11 @@
 
 Treat the credential as compromised because it was committed to Git history and the repository has a configured remote.
 
-Affected file: `gcs-credentials.json`  
-Historical introduction: commit `c0318725c06e186cee1482abfc077f674accc38b`  
-Active-tree status: removed from `refactor/v2`  
+Affected file: `gcs-credentials.json`
+
+Historical introduction: commit `c0318725c06e186cee1482abfc077f674accc38b`
+
+Active-tree status: removed from `refactor/v2`
 Current V2 ignore status: credential patterns added to `.gitignore`
 
 ## External action required
@@ -76,4 +78,3 @@ The exact remote/tag policy must be approved before the force-push step. Afterwa
 - EmailJS service/template/public-key values are client-visible by design, but the contact flow lacks anti-spam controls.
 - `Footer` injects CMS-provided SVG code with `dangerouslySetInnerHTML`; this remains a separate stored-XSS risk.
 - `Media` explicitly permits public read/create/update/delete in `src/collections/Media.ts`; this requires live unauthenticated access verification.
-
