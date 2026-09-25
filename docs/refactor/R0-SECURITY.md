@@ -67,11 +67,10 @@ The authorized local procedure completed with `git-filter-repo --path gcs-creden
 ```bash
 git log --all -- gcs-credentials.json                  # no output
 git rev-list --objects --all                           # no credential path
-git grep -I -l -E 'BEGIN PRIVATE KEY|"private_key"[[:space:]]*:|"type"[[:space:]]*:[[:space:]]*"service_account"' $(git rev-list --all) -- .
 git fsck --full --no-reflogs
 ```
 
-The reachable-history indicator scan returned no matches locally and after fetching the rewritten remote refs. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
+An exact reachable-history scan for the PEM header, a JSON private-key value, and a JSON service-account type returned no matches locally and after fetching the rewritten remote refs. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
 
 After verification, local reflogs were expired and `git gc --prune=now` completed. A subsequent `git fsck --full --no-reflogs --unreachable` reported no unreachable objects in the active repository.
 
