@@ -1,0 +1,63 @@
+:root {
+  --font-interface: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+body {
+  font-family: var(--font-interface);
+  font-size: var(--step-0);
+  line-height: 1.45;
+}
+
+.type-display {
+  font-size: var(--step-5);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.type-title {
+  font-size: var(--step-3);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.type-heading {
+  font-size: var(--step-2);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.type-subheading {
+  font-size: var(--step-1);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.type-body {
+  font-size: var(--step-0);
+  line-height: 1.5;
+}
+
+.type-small {
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.type-meta {
+  color: var(--color-text-subtle);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.type-caption {
+  color: var(--color-text-muted);
+  font-size: var(--step--2);
+  line-height: 1.3;
+}
+
+.type-code {
+  font-family: var(--font-code);
+  font-size: var(--step--1);
+}

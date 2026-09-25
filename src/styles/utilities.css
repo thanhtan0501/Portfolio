@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-canvas);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.feature-container {
+  width: min(100%, var(--layout-feature-width));
+  margin-inline: auto;
+}
+
+.reading-container {
+  width: min(100%, var(--layout-reading-width));
+  margin-inline: auto;
+}
+
+.ds-surface {
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-1);
+}
+
+.ds-surface-elevated {
+  box-shadow: var(--shadow-surface);
+  background: var(--color-surface-2);
+}
+
+.ds-surface-interactive:hover {
+  background: var(--color-surface-hover);
+}
+
+.ds-dialog {
+  width: min(90vw, var(--layout-feature-width));
+  max-height: min(90vh, 48rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-elevated);
+}
+
+.ds-dialog::backdrop {
+  background: rgb(3 5 7 / 72%);
+  backdrop-filter: blur(4px);
+}
+
+.ds-spinner {
+  display: inline-block;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border: 0.35rem solid var(--color-surface-3);
+  border-top-color: var(--color-text-primary);
+  border-radius: var(--radius-pill);
+  animation: ds-spinner-rotation 1s linear infinite;
+}
+
+.ds-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.panda-watermark {
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  right: 0;
+  height: 65vh;
+  pointer-events: none;
+  opacity: 0.3;
+  transform: translate(50%, -50%);
+}
+
+.moon {
+  width: 50vmin;
+  height: 50vmin;
+}
+
+@keyframes ds-spinner-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}

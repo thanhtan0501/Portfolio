@@ -1,0 +1,88 @@
+:root {
+  --gray-0: #f8f9fa;
+  --gray-1: #f1f3f5;
+  --gray-2: #e9ecef;
+  --gray-3: #dee2e6;
+  --gray-4: #ced4da;
+  --gray-5: #adb5bd;
+  --gray-6: #868e96;
+  --gray-7: #495057;
+  --gray-8: #343a40;
+  --gray-9: #212529;
+  --gray-10: #16191d;
+  --gray-11: #0d0f12;
+  --gray-12: #030507;
+
+  --color-canvas: var(--gray-10);
+  --color-surface-1: var(--gray-9);
+  --color-surface-2: var(--gray-8);
+  --color-surface-3: var(--gray-7);
+  --color-surface-hover: color-mix(in srgb, var(--gray-7) 82%, var(--gray-8));
+  --color-surface-overlay: rgb(22 25 29 / 65%);
+
+  --color-text-primary: var(--gray-1);
+  --color-text-secondary: var(--gray-3);
+  --color-text-muted: var(--gray-5);
+  --color-text-subtle: var(--gray-6);
+
+  --color-accent: #2f81f7;
+  --color-accent-hover: #5398f8;
+  --color-focus-ring: var(--color-accent);
+
+  --color-border-subtle: rgb(173 181 189 / 22%);
+  --color-border-interactive: rgb(173 181 189 / 48%);
+  --color-danger: #ff6b6b;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-pill: 999px;
+
+  --layout-feature-width: 824px;
+  --layout-reading-ratio: 0.86;
+  --layout-reading-width: calc(var(--layout-feature-width) * var(--layout-reading-ratio));
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --shadow-surface: 0 0.25rem 1rem rgb(3 5 7 / 24%);
+  --shadow-elevated: 0 0.75rem 2rem rgb(3 5 7 / 38%);
+
+  --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.8rem);
+  --step--1: clamp(0.83rem, calc(0.78rem + 0.29vw), 1rem);
+  --step-0: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
+  --step-1: clamp(1.2rem, calc(1.07rem + 0.63vw), 1.56rem);
+  --step-2: clamp(1.44rem, calc(1.26rem + 0.89vw), 1.95rem);
+  --step-3: clamp(1.73rem, calc(1.48rem + 1.24vw), 2.44rem);
+  --step-4: clamp(2.07rem, calc(1.73rem + 1.7vw), 3.05rem);
+  --step-5: clamp(2.49rem, calc(2.03rem + 2.31vw), 3.82rem);
+  --step-6: clamp(2.99rem, calc(2.37rem + 3.1vw), 4.77rem);
+  --step-7: clamp(3.58rem, calc(2.76rem + 4.13vw), 5.96rem);
+  --step-8: clamp(4.3rem, calc(3.2rem + 5.48vw), 7.45rem);
+  --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
+}
+
+@theme inline {
+  --color-portfolio-canvas: var(--color-canvas);
+  --color-portfolio-surface-1: var(--color-surface-1);
+  --color-portfolio-surface-2: var(--color-surface-2);
+  --color-portfolio-surface-3: var(--color-surface-3);
+  --color-portfolio-surface-hover: var(--color-surface-hover);
+  --color-portfolio-text-primary: var(--color-text-primary);
+  --color-portfolio-text-secondary: var(--color-text-secondary);
+  --color-portfolio-text-muted: var(--color-text-muted);
+  --color-portfolio-text-subtle: var(--color-text-subtle);
+  --color-portfolio-accent: var(--color-accent);
+  --color-portfolio-focus: var(--color-focus-ring);
+  --radius-portfolio-sm: var(--radius-sm);
+  --radius-portfolio-md: var(--radius-md);
+  --radius-portfolio-lg: var(--radius-lg);
+  --radius-portfolio-pill: var(--radius-pill);
+}
