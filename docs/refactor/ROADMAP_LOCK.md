@@ -1,15 +1,15 @@
 # Portfolio V2 roadmap lock
 
-Status: R1 CURRENT
+Status: R2 CURRENT
 R0 status: CLOSED_WITH_ACCEPTED_EXTERNAL_LIMITATIONS
-Scope of this run: R1 only
+Scope of this run: R2 only
 
 ## Locked roadmap
 
 ```text
 R0  Freeze V1 + Security + Baseline                         CLOSED
-R1  Next.js 16 clean foundation                            CURRENT
-R2  Design System formalization
+R1  Next.js 16 clean foundation                            CLOSED
+R2  Design System formalization                            CURRENT
 R3  Supabase PostgreSQL + Drizzle
 R4  Supabase Auth + Custom CMS shell
 R5  Application/domain/data boundaries
