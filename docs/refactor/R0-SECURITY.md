@@ -73,6 +73,8 @@ git fsck --full --no-reflogs
 
 The reachable-history indicator scan returned no matches locally and after fetching the rewritten remote refs. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
 
+After verification, local reflogs were expired and `git gc --prune=now` completed. A subsequent `git fsck --full --no-reflogs --unreachable` reported no unreachable objects in the active repository.
+
 ## Additional findings
 
 - `.env` is ignored and no `.env` file was present during the inspected run.
