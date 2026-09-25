@@ -1,0 +1,10 @@
+{
+  "source": "synthetic-shape-fixture",
+  "nodes": [
+    { "type": "h2", "children": [{ "text": "Heading" }] },
+    { "children": [{ "text": "Bold", "bold": true }, { "text": " and normal text" }] },
+    { "type": "ul", "children": [{ "type": "li", "children": [{ "text": "List item" }] }] },
+    { "type": "link", "url": "https://example.invalid", "newTab": true, "children": [{ "text": "External link" }] },
+    { "type": "upload", "value": { "id": "legacy-media-id", "url": "https://example.invalid/media/example.jpg", "mimeType": "image/jpeg", "alt": "Example media" } }
+  ]
+}

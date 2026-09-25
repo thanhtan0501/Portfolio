@@ -1,0 +1,9 @@
+{
+  "source": "synthetic-shape-fixture",
+  "id": "legacy-about-page-id",
+  "title": "About",
+  "richText": [
+    { "type": "h2", "children": [{ "text": "About" }] },
+    { "children": [{ "text": "Public about content." }] }
+  ]
+}

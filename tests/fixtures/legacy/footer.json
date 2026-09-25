@@ -1,0 +1,11 @@
+{
+  "source": "synthetic-shape-fixture",
+  "SocialItem": [
+    {
+      "social_name": "Example Network",
+      "title": "Example social link",
+      "link_address": "https://example.invalid/social",
+      "icon": "<svg aria-hidden=\"true\"></svg>"
+    }
+  ]
+}

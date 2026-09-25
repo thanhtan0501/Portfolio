@@ -1,0 +1,13 @@
+{
+  "source": "synthetic-shape-fixture",
+  "id": "legacy-project-id",
+  "title": "Example Project",
+  "description": [{ "children": [{ "text": "Project summary" }] }],
+  "detail": [{ "children": [{ "text": "Project detail" }] }],
+  "images": [{ "id": "legacy-project-image-row", "image": { "id": "legacy-project-media-id", "url": "https://example.invalid/media/project.jpg", "mimeType": "image/jpeg", "alt": "Project image" } }],
+  "publishedAt": "2024-02-20T00:00:00.000Z",
+  "link_code": "https://example.invalid/source",
+  "link_demo": "https://example.invalid/demo",
+  "technologies": ["reactjs", "nextjs"],
+  "relatedProjects": ["legacy-related-project-id"]
+}

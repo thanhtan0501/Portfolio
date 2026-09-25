@@ -1,0 +1,8 @@
+{
+  "source": "synthetic-shape-fixture",
+  "id": "legacy-feed-id",
+  "detail": [{ "children": [{ "text": "Public feed entry" }] }],
+  "images": [{ "id": "legacy-feed-image-row", "image": { "id": "legacy-feed-media-id", "url": "https://example.invalid/media/feed.jpg", "mimeType": "image/jpeg", "alt": "Feed image" } }],
+  "publishedAt": "2024-02-21T00:00:00.000Z",
+  "custom": "1"
+}

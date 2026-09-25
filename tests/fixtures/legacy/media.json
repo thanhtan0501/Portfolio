@@ -1,0 +1,12 @@
+{
+  "source": "synthetic-shape-fixture",
+  "id": "legacy-media-id",
+  "alt": "Example media",
+  "description": "Public media description",
+  "url": "https://example.invalid/media/example.jpg",
+  "filename": "example.jpg",
+  "mimeType": "image/jpeg",
+  "filesize": 123456,
+  "width": 1280,
+  "height": 720
+}

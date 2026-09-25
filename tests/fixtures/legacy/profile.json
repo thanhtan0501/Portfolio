@@ -1,0 +1,10 @@
+{
+  "source": "synthetic-shape-fixture",
+  "id": "legacy-user-id",
+  "name": "Example Portfolio Owner",
+  "description": [{ "children": [{ "text": "Public profile description" }] }],
+  "birthday": "1999-03-20T12:00:00.000Z",
+  "location": "Example City, Example Country",
+  "avatar": { "id": "legacy-avatar-id", "url": "https://example.invalid/media/avatar.jpg", "alt": "Profile avatar" },
+  "code": { "id": "legacy-banner-id", "title": "Example banner", "url": "https://example.invalid/banner" }
+}
