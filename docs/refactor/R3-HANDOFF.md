@@ -16,6 +16,7 @@ approved Supabase Free development project. No R4 implementation was started.
 - Branch: `refactor/v2`
 - R2 starting HEAD: `950968f`
 - R3 implementation baseline: `c36f87d9a455cb426b4efeff051533c36c21a112`
+- R3 verification commit: `3832bc9`
 - V1 reference: `portfolio-v1-final` at sanitized commit
   `8e969466898a6c3ec61843e5783d841c9a117ae4`
 - R3 closure changes: database verifier hardening, Supabase CLI temp-file
