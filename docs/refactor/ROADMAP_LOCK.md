@@ -1,10 +1,10 @@
 # Portfolio V2 roadmap lock
 
-Status: R3 CLOSED; R4 NOT STARTED
+Status: R4 CLOSED; R5 NOT STARTED
 R0 status: CLOSED_WITH_ACCEPTED_EXTERNAL_LIMITATIONS
 R1 status: CLOSED
 R2 status: CLOSED
-Scope of this run: R3 only
+Scope of this run: R4 only
 
 ## Locked roadmap
 
@@ -13,7 +13,7 @@ R0  Freeze V1 + Security + Baseline                         CLOSED
 R1  Next.js 16 clean foundation                            CLOSED
 R2  Design System formalization                            CLOSED
 R3  Supabase PostgreSQL + Drizzle                          CLOSED
-R4  Supabase Auth + Custom CMS shell
+R4  Supabase Auth + Custom CMS shell                         CLOSED
 R5  Application/domain/data boundaries
 R6  Rich Content + Media infrastructure
 R7  Full Custom CMS
@@ -48,13 +48,14 @@ GitHub Actions
 pnpm
 ```
 
-The final direction is implemented phase by phase. R3 has implemented only the
-Supabase PostgreSQL and Drizzle database foundation; later phases remain
-unimplemented until explicitly authorized.
+The final direction is implemented phase by phase. R4 has implemented only
+Supabase Auth SSR, database-backed admin authorization, and the protected CMS
+shell; content CRUD, Storage, rich editing, repositories, public data
+rendering, and later phases remain unimplemented until explicitly authorized.
 
-Architecture changes require explicit approval. R3 does not authorize Auth,
-Storage, CMS, repositories, application services, public data rendering, or
-any R4 work.
+Architecture changes require explicit approval. R4 does not authorize Storage,
+content CRUD, rich editing, repositories, application services, public data
+rendering, or any R5 work.
 
 ## R0 closure and fresh-start amendment
 

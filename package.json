@@ -24,6 +24,7 @@
     "db:migrate": "node scripts/db/migrate.mjs",
     "db:ping": "node scripts/db/ping.mjs",
     "db:verify": "node scripts/db/verify.mjs",
+    "auth:verify": "node scripts/auth/verify-live.mjs",
     "db:studio": "drizzle-kit studio",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm format:check && pnpm build"
   },
