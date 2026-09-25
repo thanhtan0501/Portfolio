@@ -6,3 +6,12 @@ package-lock.json
 .env
 .next
 .vercel
+
+# Local credentials; never commit service-account keys or private key material.
+gcs-credentials.json
+service-account*.json
+*-credentials.json
+*.pem
+*.key
+
+# Local legacy snapshots; exports may contain private content and stay uncommitted.
