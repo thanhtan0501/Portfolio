@@ -70,7 +70,7 @@ git rev-list --objects --all                           # no credential path
 git fsck --full --no-reflogs
 ```
 
-An exact reachable-history scan for the PEM header, a JSON private-key value, and a JSON service-account type returned no matches locally and after fetching the rewritten remote refs. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
+An exact reachable-history scan of non-documentation repository content for the PEM header, a JSON private-key value, and a JSON service-account type returned no matches locally and after fetching the rewritten remote refs. Earlier R0 documentation commits contained a redacted scan-command literal; that is documentation text, not credential material, and the current tip no longer contains the literal. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
 
 After verification, local reflogs were expired and `git gc --prune=now` completed. A subsequent `git fsck --full --no-reflogs --unreachable` reported no unreachable objects in the active repository.
 
