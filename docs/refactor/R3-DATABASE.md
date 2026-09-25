@@ -2,11 +2,17 @@
 
 ## Status
 
-The local R3 database foundation is implemented. Supabase project access and a
-real PostgreSQL connection were not available in this execution environment, so
-the migration has been generated and checked but not applied to a cloud database.
+The R3 database foundation is implemented and verified against the approved
+Supabase Free development project.
 
-`R3_CLOUD_STATUS=BLOCKED_AUTH`
+`R3_CLOUD_STATUS=VERIFIED`
+
+Verified on 2026-09-25:
+
+- Project: `portfolio-v2-dev`
+- Project ref: `ijlhbalfercqijanocfg`
+- Region: `ap-southeast-1` (Southeast Asia/Singapore)
+- Plan: Free; no paid compute, IPv4 add-on, or paid backup was enabled.
 
 No connection URL, password, API key, or Supabase token is committed here.
 
@@ -27,10 +33,13 @@ code will use `DATABASE_URL`, intended for Supavisor transaction mode on port
 6543. The postgres.js client sets `prepare: false` and `max: 1`, which matches
 transaction pooling and keeps the application-side connection budget small.
 
-Drizzle Kit uses `DATABASE_MIGRATION_URL`, intended for the direct PostgreSQL
-endpoint on port 5432. `pnpm db:migrate` refuses to start when that variable is
-missing. No runtime connection is created during the current Next.js build
-because no application page imports `src/db/client.ts`.
+Drizzle Kit uses `DATABASE_MIGRATION_URL`. The direct PostgreSQL endpoint on
+port 5432 was not reachable from this environment because its IPv6-only host
+could not resolve, so the verified migration path uses Supavisor session mode
+on port 5432. Transaction mode is not used for migrations. `pnpm db:migrate`
+refuses to start when that variable is missing. No runtime connection is
+created during the current Next.js build because no application page imports
+`src/db/client.ts`.
 
 `src/db/client.ts` is server-only and lazily constructs a typed Drizzle client.
 Development uses a `globalThis` cache to avoid a new postgres.js client on every
@@ -206,8 +215,10 @@ The migration explicitly:
 4. creates no browser-facing policies.
 
 This is defense in depth. The primary boundary remains that V2 does not use
-Supabase Data API for application data. The exact grants and RLS state remain
-unverified until the migration runs against the approved Supabase project.
+Supabase Data API for application data. The applied migration was verified with
+PostgreSQL catalog queries: all 12 tables have RLS enabled, there are zero
+portfolio policies, browser roles have no schema/table/sequence privileges,
+and matching default privileges are revoked.
 
 Supabase-managed schemas (`auth`, `storage`, `realtime`, `extensions`,
 `graphql`, and `vault`) are not modified, and R3 creates no foreign key to
@@ -230,13 +241,27 @@ are intentionally absent. The initial checked-in migration is
 custom SQL for grants and RLS that are not represented by the Drizzle schema
 DSL.
 
+## Cloud verification record
+
+- `pnpm db:migrate`: PASS; initial migration applied successfully.
+- `pnpm db:migrate` again: PASS; the Drizzle journal skipped already-applied
+  schema work without duplication or destructive changes.
+- `pnpm db:ping`: PASS through the runtime transaction pooler on port 6543.
+- `pnpm db:verify`: PASS; exact tables, enums, constraints, foreign keys,
+  indexes, RLS, policies, privileges, default privileges, migration journal,
+  and empty content tables verified.
+- Transaction smoke tests: PASS for negative sort order, self-project
+  relation, invalid project date order, and published page without
+  `published_at`; all rejected transactions rolled back.
+- The verified database contains schema only. No portfolio content was seeded.
+
 ## Known limitations
 
-- No authenticated Supabase CLI/API session or database URL was available, so
-  cloud project provisioning, migration application, ping, RLS verification,
-  and privilege verification remain blocked.
 - No portfolio content is seeded.
 - No repositories, application services, auth tables, storage buckets, CMS
   tables, contact tables, or rich-content editor schema exist yet.
 - JSONB fields intentionally use conservative `unknown` typing until R6 defines
   the rich-content representation.
+- Full dependency audit still reports one moderate development-only `esbuild`
+  advisory through `drizzle-kit`; `pnpm audit --prod` reports no production
+  vulnerabilities.

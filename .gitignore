@@ -4,8 +4,11 @@ media
 node_modules
 package-lock.json
 .env
+.env.local
+.env.*.local
 .next
 .vercel
+/supabase/.temp/
 
 # Local credentials; never commit service-account keys or private key material.
 gcs-credentials.json
@@ -16,6 +19,9 @@ service-account*.json
 
 # Local legacy snapshots; exports may contain private content and stay uncommitted.
 /.legacy-export/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
 
 # R1 build and test artifacts.
 .pnpm-store
