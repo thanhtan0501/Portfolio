@@ -1,4 +1,0 @@
-[data-jiggle-404] {
-    display: inline-block;
-    translate: calc((var(--px, 0) * var(--mx, 0)) * 1%) calc((var(--py, 0) * var(--my, 0)) * 1%);
-}

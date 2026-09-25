@@ -1,1 +1,7 @@
-**/payload-types.ts
+.next
+node_modules
+graft
+docs
+tests/fixtures/legacy
+pnpm-lock.yaml
+next-env.d.ts

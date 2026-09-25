@@ -1,38 +1,20 @@
-import React from 'react'
-import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 
-import './app.css'
-import '../styles/panda.css'
+import { siteConfig } from '@/lib/site/config'
 
-import StoreProvider from './redux/Provider'
-import { LogoIcon } from '../assets/icon'
-import Nav from './_components/Nav'
-import Footer from './_components/Footer'
+import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
-
-export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
-  title: 'Tan Thanh - Developer',
-  icons: {
-    icon: '/favicon.svg',
-  },
-  content: 'width=device-width,initial-scale=1,shrink-to-fit=no',
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.name,
+  description: siteConfig.description,
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`min-h-screen h-full font-sans antialiased ${inter.className}`}>
-        <StoreProvider>
-          <LogoIcon w="990" h="955" className="watermark-panda" />
-          <main className="relative flex flex-col min-h-screen">
-            <Nav />
-            <div className="flex-grow flex-1 flex flex-col h-full">{children}</div>
-            <Footer />
-          </main>
-        </StoreProvider>
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   )
 }

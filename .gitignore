@@ -16,3 +16,8 @@ service-account*.json
 
 # Local legacy snapshots; exports may contain private content and stay uncommitted.
 /.legacy-export/
+
+# R1 build and test artifacts.
+.pnpm-store
+coverage
+*.tsbuildinfo
