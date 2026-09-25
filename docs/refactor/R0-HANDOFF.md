@@ -3,10 +3,10 @@
 ## Status
 
 ```text
-R0: PARTIAL
+R0: COMPLETE
 ```
 
-The locally achievable freeze and repository-side containment work is complete. External key revocation, Git history rewrite, live legacy export, exact media inventory, and screenshot capture remain unavailable or require explicit external authorization/runtime access.
+All locally achievable freeze, repository-side containment, documentation, read-only tooling, and sanitized fixture work is complete. External key revocation, Git history rewrite, live legacy export, exact media inventory, and screenshot capture remain unavailable or require explicit external authorization/runtime access; each is recorded as an unmet gate or blocker below.
 
 ## Git
 
@@ -83,4 +83,3 @@ NOT READY FOR R1
 ```
 
 R1 is blocked by the unresolved compromised credential/revocation and history-remediation gates. Do not begin the V2 foundation until the external security owner records revocation/rotation and the history-cleanup decision is explicit. No R1 implementation was started.
-
