@@ -4,13 +4,14 @@
 
 | Item | Value |
 |---|---|
-| Audited V1 commit | `ccd5bb1903b7800791491c8064568fab764765d5` |
+| Audited V1 commit before purge | `ccd5bb1903b7800791491c8064568fab764765d5` |
+| Sanitized V1 commit | `8e969466898a6c3ec61843e5783d841c9a117ae4` |
 | Baseline branch at start | `master` |
-| V1 tag | `portfolio-v1-final` annotated tag created locally at the audited commit |
-| R0 working branch | `refactor/v2` |
+| V1 tag | `portfolio-v1-final` annotated tag recreated at the sanitized V1 commit |
+| R0 working branch | `refactor/v2` at `dd5f05000a99dd67e612fd6f423747156c707ba9` |
 | Remote | `origin` → `git@github.com:thanhtan0501/Portfolio.git` |
-| Push performed | No |
-| Destructive reset/clean | No |
+| Push performed during initial R0 | No |
+| Destructive reset/clean | No; history purge used `git-filter-repo` after an offline bundle and stash preservation |
 
 The working tree was not clean at R0 start. Pre-existing changes were preserved: `.gitignore` already contained an uncommitted `/graft/` ignore rule, `.DS_Store` and `.ignore` were untracked, and the previous `docs/codebase-audit/` deliverable was untracked. R0 changes are documented separately; these files were not discarded.
 

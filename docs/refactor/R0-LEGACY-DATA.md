@@ -6,7 +6,7 @@
 legacy_export_status: blocked
 ```
 
-The export design and read-only tooling are present, but a live Payload/MongoDB connection was unavailable. No production content was exported and no credentials were changed.
+The export design and read-only tooling are present, but a live Payload/MongoDB connection was unavailable. The Render API timed out and the Vercel `/api` routes returned 404. No production CMS content was exported and no database content was changed. Public GCS object metadata was available and is recorded separately in `R0-MEDIA-INVENTORY.md`; it is not a substitute for Payload records.
 
 ## V1 → future V2 meaning
 
@@ -47,6 +47,14 @@ R3 owns the future database implementation. This document records meaning only; 
 `export-legacy.ts` intentionally excludes auth fields and private operational fields. User exports include only public profile fields: `id`, `name`, `description`, `birthday`, `location`, `avatar`, `code`, and timestamps. Passwords, hashes, salts, reset tokens, login state, emails, and secrets are not exported.
 
 Other collections are filtered to content/media fields only. Export metadata contains counts and timestamps, never environment values or credential material.
+
+## Live access attempts
+
+- V1 HTML: reachable at `https://thanhtan0501.vercel.app`.
+- Candidate Payload API: `https://portfolio-m47y.onrender.com/api/...` timed out without a response.
+- Vercel `/api/projects`, `/api/feeds`, `/api/media`, `/api/pages`, and `/api/globals/footer` probes returned 404.
+- MongoDB/Payload credentials were not available locally, so the read-only exporter was not run against production.
+- The seven committed fixtures remain synthetic shape fixtures; real-shape fixture replacement is blocked by the unavailable CMS export.
 
 ## Unknowns requiring investigation
 

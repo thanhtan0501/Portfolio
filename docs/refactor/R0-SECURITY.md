@@ -6,6 +6,8 @@
 
 Treat the credential as compromised because it was committed to Git history and the repository has a configured remote.
 
+Safe metadata recovered from the historical JSON: project `portfolio-413003`, service account `portfolio-cloud-storage@portfolio-413003.iam.gserviceaccount.com`, and compromised key ID `05ef08102e2ba75e2d594b3ae4b5b545c930be3c`. No private-key material is reproduced.
+
 Affected file: `gcs-credentials.json`
 
 Historical introduction: commit `c0318725c06e186cee1482abfc077f674accc38b`
@@ -13,9 +15,13 @@ Historical introduction: commit `c0318725c06e186cee1482abfc077f674accc38b`
 Active-tree status: removed from `refactor/v2`
 Current V2 ignore status: credential patterns added to `.gitignore`
 
-## External action required
+## External action status
 
-**EXTERNAL ACTION REQUIRED — not performed or verified in this R0 run.**
+`GCP_KEY_REVOCATION=BLOCKED_EXTERNAL_AUTH`
+
+The configured `gcloud` account was authenticated as `bttthanh0501@gmail.com`, but it lacked `iam.serviceAccountKeys.list`, `iam.serviceAccountKeys.delete`, project IAM-policy access, and Cloud Logging read access. A direct delete attempt for the exact compromised key was denied. The key is therefore **not revoked or verified revoked**.
+
+**SECURITY EXTERNAL ACTION REQUIRED.**
 
 An authorized Google Cloud administrator must:
 
@@ -47,29 +53,25 @@ active_credential_removed: yes
 credential_patterns_ignored: yes
 secret_values_exposed_in_R0_docs_or_output: no
 external_cloud_revocation: not_verified
-history_cleanup_status: prepared
-remote_history_rewritten: no
-force_push: no
+history_cleanup_status: completed_locally
+remote_history_rewritten: pending_push
+force_push: pending_push
 ```
 
-Deleting the file from the working tree does not remove it from `portfolio-v1-final`, `master`, `origin/master`, or prior Git objects. The local tag intentionally preserves the V1 recovery point, so it also preserves the compromised historical commit until an authorized history procedure is approved.
+The local history purge removed `gcs-credentials.json` from all active local branches, the recreated `portfolio-v1-final` tag, and the rewritten safety stash. The old audited V1 SHA was `ccd5bb1903b7800791491c8064568fab764765d5`; the sanitized V1 SHA is `8e969466898a6c3ec61843e5783d841c9a117ae4`. An offline pre-purge bundle was created before rewriting. The configured remote still requires the authorized sanitized push.
 
-## Preferred history-cleaning procedure
+## History-cleaning result and verification
 
-Do not run this procedure against the shared checkout or remote without explicit authorization. Make an offline mirror backup first.
+The authorized local procedure completed with `git-filter-repo --path gcs-credentials.json --invert-paths` after creating an offline bundle and preserving the dirty user-owned files in a stash. The stash was restored and dropped after rewriting.
 
 ```bash
-git clone --mirror git@github.com:thanhtan0501/Portfolio.git Portfolio-history-cleanup.git
-cd Portfolio-history-cleanup.git
-git bundle create ../portfolio-before-history-cleanup.bundle --all
-git filter-repo --path gcs-credentials.json --invert-paths
+git log --all -- gcs-credentials.json                  # no output
+git rev-list --objects --all                           # no credential path
+git grep -I -l -E 'BEGIN PRIVATE KEY|"private_key"[[:space:]]*:|"type"[[:space:]]*:[[:space:]]*"service_account"' $(git rev-list --all) -- .
 git fsck --full --no-reflogs
-git log --all -- gcs-credentials.json
-git push --force --all origin
-git push --force --tags origin
 ```
 
-The exact remote/tag policy must be approved before the force-push step. Afterward, all clones and CI credentials must be refreshed, and the provider key must still be independently verified as revoked. If the local V1 tag must remain as a forensic reference, preserve it outside the cleaned remote namespace rather than re-publishing a tag that points to the secret-containing history.
+The reachable-history indicator scan returned no matches. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. The sanitized branch/tag still require a remote force-with-lease push; all other clones and CI credentials must be refreshed afterward.
 
 ## Additional findings
 
@@ -78,3 +80,4 @@ The exact remote/tag policy must be approved before the force-push step. Afterwa
 - EmailJS service/template/public-key values are client-visible by design, but the contact flow lacks anti-spam controls.
 - `Footer` injects CMS-provided SVG code with `dangerouslySetInnerHTML`; this remains a separate stored-XSS risk.
 - `Media` explicitly permits public read/create/update/delete in `src/collections/Media.ts`; this requires live unauthenticated access verification.
+- `gcloud storage ls --recursive --long gs://portfolio-database-bucket` succeeded for object metadata, but this does not prove the compromised service-account key is revoked.

@@ -6,7 +6,9 @@
 visual_capture_status: blocked
 ```
 
-The available computer-use browser surface reported no available browser, and the repository has no installed screenshot/test dependency. R0 did not install Playwright or modify dependencies. No screenshots are claimed to exist.
+The deployed V1 was reachable at `https://thanhtan0501.vercel.app` and was inspected in the available native Arc window. HTTP probes returned 200 for `/`, `/about`, `/projects`, and `/contact`; `/404` returned the expected 404 response. The live page showed a closed Google billing-account error in the banner and did not populate the feed. No screenshot files could be persisted: browser-tab automation was unavailable, Arc headless capture produced no image, and macOS `screencapture` failed with a display-capture error. No screenshots are claimed to exist.
+
+Capture timestamp: `2026-09-25`, Asia/Ho_Chi_Minh. Local reproduction was not attempted because dependencies are absent and R0 does not install the V1 runtime/toolchain.
 
 ## Required baseline matrix
 
@@ -60,7 +62,7 @@ contact__375x812__validation-error.png
 404__1440x1000__initial.png
 ```
 
-Preferred storage: `docs/refactor/baseline/screenshots/`. The directory is intentionally not populated in R0 because no capture was possible.
+Preferred storage: `docs/refactor/baseline/screenshots/`. The directory remains unpopulated because no capture was possible.
 
 ## Visual contract to compare later
 
@@ -76,4 +78,4 @@ Preferred storage: `docs/refactor/baseline/screenshots/`. The directory is inten
 
 ## Capture blocker
 
-Exact visual capture requires either a browser surface with screenshot persistence and viewport control or an explicitly authorized local/production browser workflow. Do not infer screenshot parity from source inspection alone.
+Exact visual capture remains blocked by the lack of a screenshot-capable browser surface with persistence and viewport control. Do not infer screenshot parity from source inspection alone.
