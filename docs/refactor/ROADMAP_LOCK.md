@@ -1,13 +1,14 @@
 # Portfolio V2 roadmap lock
 
-Status: LOCKED
-Scope of this run: R0 only
+Status: R1 CURRENT
+R0 status: CLOSED_WITH_ACCEPTED_EXTERNAL_LIMITATIONS
+Scope of this run: R1 only
 
 ## Locked roadmap
 
 ```text
-R0  Freeze V1 + Security + Baseline
-R1  Next.js 16 clean foundation
+R0  Freeze V1 + Security + Baseline                         CLOSED
+R1  Next.js 16 clean foundation                            CURRENT
 R2  Design System formalization
 R3  Supabase PostgreSQL + Drizzle
 R4  Supabase Auth + Custom CMS shell
@@ -15,7 +16,7 @@ R5  Application/domain/data boundaries
 R6  Rich Content + Media infrastructure
 R7  Full Custom CMS
 R8  Public Portfolio rewrite with visual parity
-R9  Legacy data/media migration
+R9  Fresh Content Bootstrap + Optional Legacy Recovery
 R10 Contact + Security hardening
 R11 SEO + Accessibility + Performance
 R12 Testing + CI/CD
@@ -48,6 +49,18 @@ pnpm
 The final direction is context only during R0. No part of it is implemented here.
 
 Architecture changes require explicit approval. In particular, R0 does not upgrade Next, install new architecture dependencies, change Payload architecture, migrate MongoDB, introduce Supabase/PostgreSQL/Drizzle/Auth/Storage, replace Redux, replace EmailJS, or redesign public UI.
+
+## R0 closure and fresh-start amendment
+
+The owner approved Portfolio V2 as a deliberate fresh rebuild. Legacy MongoDB, Payload, GCS, and the old production API are optional recovery inputs only and are not dependencies of Portfolio V2. No R1-R13 phase may depend on the unavailable legacy infrastructure.
+
+```text
+Legacy DB/cloud recovery: OPTIONAL
+Legacy content migration: OPTIONAL ONLY
+Legacy visual screenshots: NO LONGER A HARD R1 GATE
+Canonical V1 source reference: portfolio-v1-final
+Canonical current-state documentation: docs/codebase-audit/
+```
 
 ```text
 R0-R13 = refactor/re-platform

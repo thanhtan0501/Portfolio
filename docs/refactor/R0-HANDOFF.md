@@ -3,10 +3,21 @@
 ## Status
 
 ```text
-R0: PARTIAL
+R0_STATUS=CLOSED_WITH_ACCEPTED_EXTERNAL_LIMITATIONS
 ```
 
-Repository-side history remediation, sanitized remote synchronization, and the GCS bucket-object inventory are complete. R0 remains partial because the Google Cloud key cannot be revoked with the available IAM permissions, CMS/Mongo content export is unavailable, and screenshot persistence is unavailable.
+Repository-side history remediation, sanitized remote synchronization, and the available GCS bucket-object inventory are complete. The owner accepts the unavailable Google Cloud IAM action, CMS/Mongo export, and visual screenshot capture as external limitations. These are residual evidence/security items, not dependencies for Portfolio V2.
+
+## Owner-approved fresh-start decision
+
+```text
+Legacy Mongo/Payload: NOT REQUIRED FOR V2
+Legacy GCS: NOT REQUIRED FOR V2
+Legacy content migration: OPTIONAL ONLY
+Legacy visual screenshots: NO LONGER A HARD R1 GATE
+Canonical V1 source reference: portfolio-v1-final
+Canonical current-state documentation: docs/codebase-audit/
+```
 
 ## Git
 
@@ -21,7 +32,7 @@ Repository-side history remediation, sanitized remote synchronization, and the G
 
 - Credential removed from current V2 tree: yes, `gcs-credentials.json`.
 - Credential file ignored: yes; credential/private-key patterns added to `.gitignore`.
-- Google Cloud credential externally revoked: **blocked by missing IAM permissions; EXTERNAL ACTION REQUIRED**.
+- Google Cloud credential externally revoked: **blocked by missing IAM permissions; EXTERNAL ACTION REQUIRED**. This remains an external residual security item and is not a V2 dependency.
 - Git-history cleanup: `completed_locally`; active local refs and recreated V1 tag no longer reach the credential filename or safe private-key indicators.
 - Remote history cleanup: complete and verified through `git ls-remote` plus fetched remote-tracking refs.
 - Additional findings: public media writes/deletes are explicitly enabled; footer SVG HTML is injected; user/auth-shaped data crosses into client/persisted state. See `R0-SECURITY.md`.
@@ -77,10 +88,10 @@ Repository-side history remediation, sanitized remote synchronization, and the G
 2. Legacy export needs a working, authorized Payload/MongoDB runtime or API credentials.
 3. Exact visual screenshots need a browser/screenshot surface with viewport control and workspace persistence.
 
-## R1 readiness
+## R1 transition
 
 ```text
-NOT READY FOR R1
+R1 AUTHORIZED BY OWNER
 ```
 
-R1 is blocked by the unresolved compromised credential/revocation and pending remote sanitization gates. CMS export and visual capture remain R0 evidence gaps. No R1 implementation was started.
+R1 may proceed as a fresh foundation without legacy infrastructure. R1 must not connect to MongoDB, Payload, GCS, or the old production API. No R1 implementation was started at the time this handoff was closed.
