@@ -54,8 +54,8 @@ credential_patterns_ignored: yes
 secret_values_exposed_in_R0_docs_or_output: no
 external_cloud_revocation: not_verified
 history_cleanup_status: completed_locally
-remote_history_rewritten: pending_push
-force_push: pending_push
+remote_history_rewritten: yes
+force_push: yes (master used force-with-lease)
 ```
 
 The local history purge removed `gcs-credentials.json` from all active local branches, the recreated `portfolio-v1-final` tag, and the rewritten safety stash. The old audited V1 SHA was `ccd5bb1903b7800791491c8064568fab764765d5`; the sanitized V1 SHA is `8e969466898a6c3ec61843e5783d841c9a117ae4`. An offline pre-purge bundle was created before rewriting. The configured remote still requires the authorized sanitized push.
@@ -71,7 +71,7 @@ git grep -I -l -E 'BEGIN PRIVATE KEY|"private_key"[[:space:]]*:|"type"[[:space:]
 git fsck --full --no-reflogs
 ```
 
-The reachable-history indicator scan returned no matches. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. The sanitized branch/tag still require a remote force-with-lease push; all other clones and CI credentials must be refreshed afterward.
+The reachable-history indicator scan returned no matches locally and after fetching the rewritten remote refs. `gitleaks` and `trufflehog` were not installed, so no third-party scanner was run. All other clones and CI credentials must be refreshed after the history rewrite.
 
 ## Additional findings
 

@@ -10,7 +10,7 @@
 | V1 tag | `portfolio-v1-final` annotated tag recreated at the sanitized V1 commit |
 | R0 working branch | `refactor/v2` at `dd5f05000a99dd67e612fd6f423747156c707ba9` |
 | Remote | `origin` → `git@github.com:thanhtan0501/Portfolio.git` |
-| Push performed during initial R0 | No |
+| Push performed during R0 finalization | Yes; sanitized `master` force-with-lease, `refactor/v2`, and `portfolio-v1-final` were synchronized and fetched back for verification |
 | Destructive reset/clean | No; history purge used `git-filter-repo` after an offline bundle and stash preservation |
 
 The working tree was not clean at R0 start. Pre-existing changes were preserved: `.gitignore` already contained an uncommitted `/graft/` ignore rule, `.DS_Store` and `.ignore` were untracked, and the previous `docs/codebase-audit/` deliverable was untracked. R0 changes are documented separately; these files were not discarded.

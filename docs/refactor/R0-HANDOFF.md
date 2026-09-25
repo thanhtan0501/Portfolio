@@ -6,16 +6,16 @@
 R0: PARTIAL
 ```
 
-Repository-side history remediation and the GCS bucket-object inventory are complete. R0 remains partial because the Google Cloud key cannot be revoked with the available IAM permissions, the remote push is pending, CMS/Mongo content export is unavailable, and screenshot persistence is unavailable.
+Repository-side history remediation, sanitized remote synchronization, and the GCS bucket-object inventory are complete. R0 remains partial because the Google Cloud key cannot be revoked with the available IAM permissions, CMS/Mongo content export is unavailable, and screenshot persistence is unavailable.
 
 ## Git
 
 - Pre-purge V1 SHA: `ccd5bb1903b7800791491c8064568fab764765d5`.
 - Sanitized V1 SHA: `8e969466898a6c3ec61843e5783d841c9a117ae4`.
-- V1 tag: `portfolio-v1-final`, recreated as an annotated tag at the sanitized V1 SHA; remote push pending.
+- V1 tag: `portfolio-v1-final`, recreated as an annotated tag at the sanitized V1 SHA and verified on `origin`.
 - V2 branch: `refactor/v2`, current working branch at `dd5f05000a99dd67e612fd6f423747156c707ba9`.
 - Dirty/clean state: dirty by design. Pre-existing `.gitignore` graft rule, `.DS_Store`, `.ignore`, and untracked `docs/codebase-audit/` were preserved and restored after the rewrite.
-- Offline pre-purge bundle created; no reset or clean was used. Sanitized remote push is pending.
+- Offline pre-purge bundle created; no reset or clean was used. Sanitized remote refs were force-with-lease synchronized and fetched back for verification.
 
 ## Security
 
@@ -23,7 +23,7 @@ Repository-side history remediation and the GCS bucket-object inventory are comp
 - Credential file ignored: yes; credential/private-key patterns added to `.gitignore`.
 - Google Cloud credential externally revoked: **blocked by missing IAM permissions; EXTERNAL ACTION REQUIRED**.
 - Git-history cleanup: `completed_locally`; active local refs and recreated V1 tag no longer reach the credential filename or safe private-key indicators.
-- Remote history cleanup: pending sanitized force-with-lease push.
+- Remote history cleanup: complete and verified through `git ls-remote` plus fetched remote-tracking refs.
 - Additional findings: public media writes/deletes are explicitly enabled; footer SVG HTML is injected; user/auth-shaped data crosses into client/persisted state. See `R0-SECURITY.md`.
 - Secret values printed or copied into R0 output: no.
 
@@ -74,9 +74,8 @@ Repository-side history remediation and the GCS bucket-object inventory are comp
 ## Blockers
 
 1. Authorized Google Cloud administrator must revoke/rotate the exposed key and review IAM/audit logs; current user account lacks the required IAM permissions.
-2. Push sanitized `master`, `refactor/v2`, and `portfolio-v1-final` refs, then verify the remote.
-3. Legacy export needs a working, authorized Payload/MongoDB runtime or API credentials.
-4. Exact visual screenshots need a browser/screenshot surface with viewport control and workspace persistence.
+2. Legacy export needs a working, authorized Payload/MongoDB runtime or API credentials.
+3. Exact visual screenshots need a browser/screenshot surface with viewport control and workspace persistence.
 
 ## R1 readiness
 
