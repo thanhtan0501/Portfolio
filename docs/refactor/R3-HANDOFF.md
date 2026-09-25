@@ -17,6 +17,7 @@ but it has not been applied. This is the only current R4 gate blocker.
 
 - Branch: `refactor/v2`
 - R2 starting HEAD verified: `950968f`
+- R3 implementation commit: `c36f87d9a455cb426b4efeff051533c36c21a112`
 - V1 reference remains `portfolio-v1-final` at sanitized commit
   `8e969466898a6c3ec61843e5783d841c9a117ae4`.
 - Pre-existing user-owned files remain unmodified and unstaged.
@@ -63,6 +64,16 @@ Passed:
 - `pnpm db:check`
 - focused env and schema tests
 - `pnpm typecheck`
+- `pnpm check` (lint, typecheck, tests, format, build)
+- `pnpm install --frozen-lockfile`
+- `pnpm audit --prod` (no known production vulnerabilities)
+- runtime smoke: `/` 200, `/design-system` 200, missing route 404
+
+Dependency warning:
+
+- Full `pnpm audit` reports one moderate dev-only advisory in transitive
+  `esbuild` under `drizzle-kit`; no production dependency is affected. It is
+  recorded rather than hidden because the dependency is migration tooling.
 
 Pending cloud verification:
 
