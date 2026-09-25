@@ -1,5 +1,6 @@
 export { portfolioSchema } from './namespace'
 export { contentStatus, mediaMode } from './enums'
+export { adminRole, adminUsers } from './admin-users'
 export { footerLinks } from './footer-links'
 export { media } from './media'
 export { pages } from './pages'

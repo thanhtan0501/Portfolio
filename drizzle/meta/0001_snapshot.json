@@ -1,0 +1,1342 @@
+{
+  "id": "ba3ee756-296a-43b9-bb10-b4c6b4377e74",
+  "prevId": "0e026c84-84d2-470a-8f42-2f0cd378d0d0",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "portfolio.admin_users": {
+      "name": "admin_users",
+      "schema": "portfolio",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "admin_role",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "admin_users_user_id_users_id_fk": {
+          "name": "admin_users_user_id_users_id_fk",
+          "tableFrom": "admin_users",
+          "tableTo": "users",
+          "schemaTo": "auth",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "portfolio.footer_links": {
+      "name": "footer_links",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "label": {
+          "name": "label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "icon_key": {
+          "name": "icon_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "visible": {
+          "name": "visible",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "footer_links_sort_order_idx": {
+          "name": "footer_links_sort_order_idx",
+          "columns": [
+            {
+              "expression": "sort_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "footer_links_label_not_empty": {
+          "name": "footer_links_label_not_empty",
+          "value": "\"portfolio\".\"footer_links\".\"label\" <> ''"
+        },
+        "footer_links_url_not_empty": {
+          "name": "footer_links_url_not_empty",
+          "value": "\"portfolio\".\"footer_links\".\"url\" <> ''"
+        },
+        "footer_links_icon_key_not_empty": {
+          "name": "footer_links_icon_key_not_empty",
+          "value": "\"portfolio\".\"footer_links\".\"icon_key\" <> ''"
+        },
+        "footer_links_sort_order_non_negative": {
+          "name": "footer_links_sort_order_non_negative",
+          "value": "\"portfolio\".\"footer_links\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.media": {
+      "name": "media",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "provider": {
+          "name": "provider",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bucket": {
+          "name": "bucket",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "path": {
+          "name": "path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "filename": {
+          "name": "filename",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "size_bytes": {
+          "name": "size_bytes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "width": {
+          "name": "width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "alt": {
+          "name": "alt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "caption": {
+          "name": "caption",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "media_path_not_empty": {
+          "name": "media_path_not_empty",
+          "value": "\"portfolio\".\"media\".\"path\" <> ''"
+        },
+        "media_filename_not_empty": {
+          "name": "media_filename_not_empty",
+          "value": "\"portfolio\".\"media\".\"filename\" <> ''"
+        },
+        "media_mime_type_not_empty": {
+          "name": "media_mime_type_not_empty",
+          "value": "\"portfolio\".\"media\".\"mime_type\" <> ''"
+        },
+        "media_size_non_negative": {
+          "name": "media_size_non_negative",
+          "value": "\"portfolio\".\"media\".\"size_bytes\" >= 0"
+        },
+        "media_width_positive": {
+          "name": "media_width_positive",
+          "value": "\"portfolio\".\"media\".\"width\" IS NULL OR \"portfolio\".\"media\".\"width\" > 0"
+        },
+        "media_height_positive": {
+          "name": "media_height_positive",
+          "value": "\"portfolio\".\"media\".\"height\" IS NULL OR \"portfolio\".\"media\".\"height\" > 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.pages": {
+      "name": "pages",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "content_status",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_title": {
+          "name": "seo_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_description": {
+          "name": "seo_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "pages_key_unique": {
+          "name": "pages_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "key"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "pages_key_not_empty": {
+          "name": "pages_key_not_empty",
+          "value": "\"portfolio\".\"pages\".\"key\" <> ''"
+        },
+        "pages_published_requires_date": {
+          "name": "pages_published_requires_date",
+          "value": "\"portfolio\".\"pages\".\"status\" <> 'published' OR \"portfolio\".\"pages\".\"published_at\" IS NOT NULL"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.post_media": {
+      "name": "post_media",
+      "schema": "portfolio",
+      "columns": {
+        "post_id": {
+          "name": "post_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "post_media_post_id_posts_id_fk": {
+          "name": "post_media_post_id_posts_id_fk",
+          "tableFrom": "post_media",
+          "tableTo": "posts",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "post_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "post_media_media_id_media_id_fk": {
+          "name": "post_media_media_id_media_id_fk",
+          "tableFrom": "post_media",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "post_media_post_id_media_id_pk": {
+          "name": "post_media_post_id_media_id_pk",
+          "columns": [
+            "post_id",
+            "media_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "post_media_sort_order_non_negative": {
+          "name": "post_media_sort_order_non_negative",
+          "value": "\"portfolio\".\"post_media\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.posts": {
+      "name": "posts",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "excerpt": {
+          "name": "excerpt",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content": {
+          "name": "content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "content_status",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "media_mode": {
+          "name": "media_mode",
+          "type": "media_mode",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'collage'"
+        },
+        "seo_title": {
+          "name": "seo_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_description": {
+          "name": "seo_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "og_media_id": {
+          "name": "og_media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "posts_status_published_at_idx": {
+          "name": "posts_status_published_at_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "published_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "posts_og_media_id_media_id_fk": {
+          "name": "posts_og_media_id_media_id_fk",
+          "tableFrom": "posts",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "og_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "posts_slug_unique": {
+          "name": "posts_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "posts_slug_not_empty": {
+          "name": "posts_slug_not_empty",
+          "value": "\"portfolio\".\"posts\".\"slug\" <> ''"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.project_media": {
+      "name": "project_media",
+      "schema": "portfolio",
+      "columns": {
+        "project_id": {
+          "name": "project_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "project_media_project_id_projects_id_fk": {
+          "name": "project_media_project_id_projects_id_fk",
+          "tableFrom": "project_media",
+          "tableTo": "projects",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "project_media_media_id_media_id_fk": {
+          "name": "project_media_media_id_media_id_fk",
+          "tableFrom": "project_media",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "project_media_project_id_media_id_pk": {
+          "name": "project_media_project_id_media_id_pk",
+          "columns": [
+            "project_id",
+            "media_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "project_media_sort_order_non_negative": {
+          "name": "project_media_sort_order_non_negative",
+          "value": "\"portfolio\".\"project_media\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.project_relations": {
+      "name": "project_relations",
+      "schema": "portfolio",
+      "columns": {
+        "project_id": {
+          "name": "project_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "related_project_id": {
+          "name": "related_project_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "project_relations_project_id_projects_id_fk": {
+          "name": "project_relations_project_id_projects_id_fk",
+          "tableFrom": "project_relations",
+          "tableTo": "projects",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "project_relations_related_project_id_projects_id_fk": {
+          "name": "project_relations_related_project_id_projects_id_fk",
+          "tableFrom": "project_relations",
+          "tableTo": "projects",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "related_project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "project_relations_project_id_related_project_id_pk": {
+          "name": "project_relations_project_id_related_project_id_pk",
+          "columns": [
+            "project_id",
+            "related_project_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "project_relations_not_self": {
+          "name": "project_relations_not_self",
+          "value": "\"portfolio\".\"project_relations\".\"project_id\" <> \"portfolio\".\"project_relations\".\"related_project_id\""
+        },
+        "project_relations_sort_order_non_negative": {
+          "name": "project_relations_sort_order_non_negative",
+          "value": "\"portfolio\".\"project_relations\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.project_technologies": {
+      "name": "project_technologies",
+      "schema": "portfolio",
+      "columns": {
+        "project_id": {
+          "name": "project_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "technology_id": {
+          "name": "technology_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "project_technologies_project_id_projects_id_fk": {
+          "name": "project_technologies_project_id_projects_id_fk",
+          "tableFrom": "project_technologies",
+          "tableTo": "projects",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "project_technologies_technology_id_technologies_id_fk": {
+          "name": "project_technologies_technology_id_technologies_id_fk",
+          "tableFrom": "project_technologies",
+          "tableTo": "technologies",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "technology_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "project_technologies_project_id_technology_id_pk": {
+          "name": "project_technologies_project_id_technology_id_pk",
+          "columns": [
+            "project_id",
+            "technology_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "project_technologies_sort_order_non_negative": {
+          "name": "project_technologies_sort_order_non_negative",
+          "value": "\"portfolio\".\"project_technologies\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.projects": {
+      "name": "projects",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "summary": {
+          "name": "summary",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content": {
+          "name": "content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "period_start": {
+          "name": "period_start",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "period_end": {
+          "name": "period_end",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "content_status",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'draft'"
+        },
+        "published_at": {
+          "name": "published_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "github_url": {
+          "name": "github_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "demo_url": {
+          "name": "demo_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "media_mode": {
+          "name": "media_mode",
+          "type": "media_mode",
+          "typeSchema": "portfolio",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'collage'"
+        },
+        "seo_title": {
+          "name": "seo_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_description": {
+          "name": "seo_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "og_media_id": {
+          "name": "og_media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "projects_status_published_at_idx": {
+          "name": "projects_status_published_at_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "published_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "projects_og_media_id_media_id_fk": {
+          "name": "projects_og_media_id_media_id_fk",
+          "tableFrom": "projects",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "og_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "projects_slug_unique": {
+          "name": "projects_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "projects_slug_not_empty": {
+          "name": "projects_slug_not_empty",
+          "value": "\"portfolio\".\"projects\".\"slug\" <> ''"
+        },
+        "projects_period_order": {
+          "name": "projects_period_order",
+          "value": "\"portfolio\".\"projects\".\"period_end\" IS NULL OR \"portfolio\".\"projects\".\"period_start\" IS NULL OR \"portfolio\".\"projects\".\"period_end\" >= \"portfolio\".\"projects\".\"period_start\""
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.site_profile": {
+      "name": "site_profile",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "singleton_key": {
+          "name": "singleton_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "headline": {
+          "name": "headline",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bio": {
+          "name": "bio",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "birthday": {
+          "name": "birthday",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "avatar_media_id": {
+          "name": "avatar_media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "banner_media_id": {
+          "name": "banner_media_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "site_profile_avatar_media_id_media_id_fk": {
+          "name": "site_profile_avatar_media_id_media_id_fk",
+          "tableFrom": "site_profile",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "avatar_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "site_profile_banner_media_id_media_id_fk": {
+          "name": "site_profile_banner_media_id_media_id_fk",
+          "tableFrom": "site_profile",
+          "tableTo": "media",
+          "schemaTo": "portfolio",
+          "columnsFrom": [
+            "banner_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "site_profile_singleton_key_unique": {
+          "name": "site_profile_singleton_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "singleton_key"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "site_profile_singleton_only": {
+          "name": "site_profile_singleton_only",
+          "value": "\"portfolio\".\"site_profile\".\"singleton_key\" = 'default'"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.site_settings": {
+      "name": "site_settings",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "singleton_key": {
+          "name": "singleton_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "site_name": {
+          "name": "site_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "site_description": {
+          "name": "site_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_seo_title": {
+          "name": "default_seo_title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_seo_description": {
+          "name": "default_seo_description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "site_settings_singleton_key_unique": {
+          "name": "site_settings_singleton_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "singleton_key"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "site_settings_singleton_only": {
+          "name": "site_settings_singleton_only",
+          "value": "\"portfolio\".\"site_settings\".\"singleton_key\" = 'default'"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "portfolio.technologies": {
+      "name": "technologies",
+      "schema": "portfolio",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "technologies_slug_unique": {
+          "name": "technologies_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "technologies_slug_not_empty": {
+          "name": "technologies_slug_not_empty",
+          "value": "\"portfolio\".\"technologies\".\"slug\" <> ''"
+        },
+        "technologies_name_not_empty": {
+          "name": "technologies_name_not_empty",
+          "value": "\"portfolio\".\"technologies\".\"name\" <> ''"
+        },
+        "technologies_sort_order_non_negative": {
+          "name": "technologies_sort_order_non_negative",
+          "value": "\"portfolio\".\"technologies\".\"sort_order\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "portfolio.admin_role": {
+      "name": "admin_role",
+      "schema": "portfolio",
+      "values": [
+        "owner",
+        "editor"
+      ]
+    },
+    "portfolio.content_status": {
+      "name": "content_status",
+      "schema": "portfolio",
+      "values": [
+        "draft",
+        "published",
+        "archived"
+      ]
+    },
+    "portfolio.media_mode": {
+      "name": "media_mode",
+      "schema": "portfolio",
+      "values": [
+        "collage",
+        "slider",
+        "gallery"
+      ]
+    }
+  },
+  "schemas": {
+    "portfolio": "portfolio"
+  },
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

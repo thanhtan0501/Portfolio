@@ -8,6 +8,7 @@ if (!url) {
 }
 
 const expectedTables = [
+  'admin_users',
   'site_profile',
   'site_settings',
   'media',
@@ -23,6 +24,7 @@ const expectedTables = [
 ]
 
 const expectedEnums = {
+  admin_role: ['owner', 'editor'],
   content_status: ['draft', 'published', 'archived'],
   media_mode: ['collage', 'slider', 'gallery'],
 }
@@ -56,6 +58,7 @@ const expectedChecks = [
 ]
 
 const expectedForeignKeys = {
+  admin_users_user_id_users_id_fk: 'c',
   post_media_post_id_posts_id_fk: 'c',
   post_media_media_id_media_id_fk: 'r',
   posts_og_media_id_media_id_fk: 'n',
@@ -125,9 +128,11 @@ try {
   }
 
   const constraints = await sql`
-    SELECT conname, contype, confdeltype
+    SELECT conname, contype, confdeltype, n_ref.nspname AS referenced_schema, ref.relname AS referenced_table
     FROM pg_constraint c
     JOIN pg_namespace n ON n.oid = c.connamespace
+    LEFT JOIN pg_class ref ON ref.oid = c.confrelid
+    LEFT JOIN pg_namespace n_ref ON n_ref.oid = ref.relnamespace
     WHERE n.nspname = 'portfolio'
   `
   const constraintNames = constraints.map(row => row.conname)
@@ -139,6 +144,13 @@ try {
     if (constraint?.confdeltype !== expectedDeleteAction) {
       throw new Error(`unexpected delete action for ${constraintName}`)
     }
+  }
+  const adminForeignKey = constraints.find(row => row.conname === 'admin_users_user_id_users_id_fk')
+  if (
+    adminForeignKey?.referenced_schema !== 'auth' ||
+    adminForeignKey?.referenced_table !== 'users'
+  ) {
+    throw new Error('admin_users.user_id must reference auth.users')
   }
 
   const indexes = await sql`
@@ -221,6 +233,8 @@ try {
   }
 
   const counts = await sql`
+    SELECT 'admin_users' AS table_name, count(*)::int AS count FROM portfolio.admin_users
+    UNION ALL
     SELECT 'site_profile' AS table_name, count(*)::int AS count FROM portfolio.site_profile
     UNION ALL SELECT 'site_settings', count(*)::int FROM portfolio.site_settings
     UNION ALL SELECT 'pages', count(*)::int FROM portfolio.pages
