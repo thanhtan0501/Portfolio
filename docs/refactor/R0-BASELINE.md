@@ -8,7 +8,7 @@
 | Sanitized V1 commit | `8e969466898a6c3ec61843e5783d841c9a117ae4` |
 | Baseline branch at start | `master` |
 | V1 tag | `portfolio-v1-final` annotated tag recreated at the sanitized V1 commit |
-| R0 working branch | `refactor/v2` at `dd5f05000a99dd67e612fd6f423747156c707ba9` |
+| R0 working branch | `refactor/v2` at the final R0 handoff commit |
 | Remote | `origin` → `git@github.com:thanhtan0501/Portfolio.git` |
 | Push performed during R0 finalization | Yes; sanitized `master` force-with-lease, `refactor/v2`, and `portfolio-v1-final` were synchronized and fetched back for verification |
 | Destructive reset/clean | No; history purge used `git-filter-repo` after an offline bundle and stash preservation |

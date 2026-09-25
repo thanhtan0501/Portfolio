@@ -13,7 +13,7 @@ Repository-side history remediation, sanitized remote synchronization, and the G
 - Pre-purge V1 SHA: `ccd5bb1903b7800791491c8064568fab764765d5`.
 - Sanitized V1 SHA: `8e969466898a6c3ec61843e5783d841c9a117ae4`.
 - V1 tag: `portfolio-v1-final`, recreated as an annotated tag at the sanitized V1 SHA and verified on `origin`.
-- V2 branch: `refactor/v2`, current working branch at `dd5f05000a99dd67e612fd6f423747156c707ba9`.
+- V2 branch: `refactor/v2`, current working branch at the final R0 handoff commit.
 - Dirty/clean state: dirty by design. Pre-existing `.gitignore` graft rule, `.DS_Store`, `.ignore`, and untracked `docs/codebase-audit/` were preserved and restored after the rewrite.
 - Offline pre-purge bundle created; no reset or clean was used. Sanitized remote refs were force-with-lease synchronized and fetched back for verification.
 
