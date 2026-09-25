@@ -4,7 +4,7 @@ Portfolio V2 is a deliberate rebuild of a personal developer portfolio.
 
 ## Current status
 
-Current refactor phase: **R1 — Next.js 16 clean foundation**.
+Current refactor phase: **R3 — Supabase PostgreSQL + Drizzle data foundation**.
 
 The active branch contains only the foundation runtime. The V1 visual system and content behavior remain available through the `portfolio-v1-final` Git tag and the audit in `docs/codebase-audit/`.
 
@@ -15,6 +15,7 @@ The active branch contains only the foundation runtime. The V1 visual system and
 - TypeScript strict mode
 - Tailwind CSS 4
 - Zod environment validation
+- Drizzle ORM + postgres.js
 - pnpm
 
 Legacy Payload, MongoDB, Express, Redux, GCS, and EmailJS infrastructure is not part of the V2 foundation.
@@ -45,9 +46,18 @@ pnpm lint
 pnpm typecheck
 pnpm test
 pnpm format:check
+pnpm db:generate
+pnpm db:check
+pnpm db:migrate
+pnpm db:ping
+pnpm db:verify
 pnpm check
 ```
 
+Database commands require the server-only `DATABASE_URL` and
+`DATABASE_MIGRATION_URL` values from `.env.example`. R3 has no database-backed
+pages yet, so ordinary builds remain offline-safe.
+
 ## Roadmap
 
-The locked roadmap and phase handoffs are in [`docs/refactor/`](docs/refactor/). R2 owns design-system formalization; R1 intentionally does not rebuild the public Portfolio UI.
+The locked roadmap and phase handoffs are in [`docs/refactor/`](docs/refactor/). R3 defines the database foundation only; authentication, CMS, storage, and public Portfolio data rendering belong to later phases.
